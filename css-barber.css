@@ -105,13 +105,15 @@ h1 {
 .item-3,
 .item-4 {
     background: #918b8b;
-    width: 240px;
+    width: 300px;
     height: 291px;
     display: inline-block;
-    margin: 33px;
+    margin: 35px;
     border-radius: 10px;
-    padding: 35px;
+    padding: 30px;
     align-items: center;
+    text-align: center;
+    margin-bottom: 10px;
 
 }
 
@@ -170,11 +172,12 @@ h1 {
 }
 
 .sobre-nos {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("./assets/sobre\ nós-banner.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("./assets/1novo.jpg");
     border-radius: 10px;
-    width: 100%;
     height: 400px;
+    width: 100vw;    
     margin: 20px;
+    
 
 
 }
@@ -187,6 +190,7 @@ h1 {
     letter-spacing: -5%;
     margin: 30px 30px 30px 30px;
     color: aliceblue;
+    padding-top: 40px;
 
 }
 
@@ -211,7 +215,7 @@ h1 {
     align-items: center;
     display: flex;
     justify-content: center;
-    height: 700px;
+    height: 500px;
 
 
 
@@ -233,7 +237,7 @@ h1 {
 
 .titulo-serviços {
     margin-top: 25px;
-    padding: 15px;
+    padding: 10px;
     align-items: center;
     text-align: center;
     font-weight: 500;
@@ -256,14 +260,110 @@ h1 {
 .titulo-principal {
     color: #D7C4A3;
     text-align: center;
-    margin: 148px auto;
+    margin: 58px auto 58px 20px;
+    
     display: flex;
     justify-content: center;
-    
+
     font-weight: 700;
     font-style: Bold;
     font-size: 36px;
     line-height: 100%;
     text-align: center;
 
+}
+
+footer {
+    width: 100%;
+    background-image: url("./assets/footer-img.png");
+    background-color: #2B2723;
+    height: 671px;
+    padding: 20px;
+
+}
+
+.logotipo-footer {
+    margin: 30px auto 30px auto;
+    display: flex;
+    justify-content: center;
+    width: 350px;
+
+}
+
+.horarios-footer {
+    color: white;
+
+}
+
+.titulos-footer {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    margin: 15px;
+    color: #D7C4A3;
+}
+
+
+.paragrafo-horarios {
+    margin-left: 15px;
+    margin-bottom: 10px;
+    line-height: 100%;
+    color: #D7C4A3;
+
+}
+
+.contatos-footer {
+
+    margin-top: 50px;
+    color: #D7C4A3;
+    padding: none;
+}
+
+.agendamento {
+    color: #D7C4A3;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-decoration: none;
+    margin-right: 10px;
+    margin-left: auto;
+    display: flex;
+    justify-content: flex-end;
+   
+   
+
+}
+
+.link-footer {
+    color: #D7C4A3;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-decoration: none;
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+    margin: 15px 15px 15px auto;
+}
+
+.titulos-footer2{
+    margin-left: 1px;
+    display: flex;
+    justify-content: flex-end;
+
+
+}
+
+
+.copy-footer{
+color: #D7C4A3;
+font-weight: 400;
+font-size: 14px;
+line-height: 100%;
+letter-spacing: 0%;
+margin: 50px auto;
+text-align: center;
 }
