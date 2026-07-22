@@ -141,7 +141,7 @@ h1 {
     line-height: 20px;
     padding: 10px;
     justify-self: center;
-    
+
 
 }
 
@@ -179,7 +179,7 @@ h1 {
 
 }
 
-.subtitulo-sobrenos{
+.subtitulo-sobrenos {
 
     font-weight: 600;
     font-size: 30px;
@@ -205,3 +205,65 @@ h1 {
 
 }
 
+.Banner-serviços {
+    background-color: rgb(0, 0, 0);
+    margin: 30px auto;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 700px;
+
+
+
+}
+
+.serviço {
+    background-color: #675E5663;
+    width: 343px;
+    height: 418px;
+    border-radius: 20px;
+    color: white;
+    margin: 25px;
+    text-align: center;
+    gap: 20px;
+
+
+
+}
+
+.titulo-serviços {
+    margin-top: 25px;
+    padding: 15px;
+    align-items: center;
+    text-align: center;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 20px;
+    line-height: 2px;
+    justify-content: center;
+
+}
+
+.texto-serviços {
+    margin: 10px;
+    width: 70%;
+    height: 87px;
+    margin: 10px auto;
+    text-align: center;
+
+}
+
+.titulo-principal {
+    color: #D7C4A3;
+    text-align: center;
+    margin: 148px auto;
+    display: flex;
+    justify-content: center;
+    
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 36px;
+    line-height: 100%;
+    text-align: center;
+
+}
