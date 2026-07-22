@@ -100,10 +100,7 @@ h1 {
 
 }
 
-.item-1,
-.item-2,
-.item-3,
-.item-4 {
+.item {
     background: #918b8b;
     width: 300px;
     height: 291px;
@@ -188,7 +185,7 @@ h1 {
     font-size: 30px;
     line-height: 100%;
     letter-spacing: -5%;
-    margin: 30px 30px 30px 30px;
+    margin: 20px 30px 30px 30px;
     color: aliceblue;
     padding-top: 40px;
 
@@ -215,7 +212,7 @@ h1 {
     align-items: center;
     display: flex;
     justify-content: center;
-    height: 500px;
+    height: 600px;
 
 
 
@@ -254,13 +251,14 @@ h1 {
     height: 87px;
     margin: 10px auto;
     text-align: center;
+    
 
 }
 
 .titulo-principal {
     color: #D7C4A3;
     text-align: center;
-    margin: 58px auto 58px 20px;
+    margin: 40px auto 0 20px;
     
     display: flex;
     justify-content: center;
@@ -277,7 +275,7 @@ footer {
     width: 100%;
     background-image: url("./assets/footer-img.png");
     background-color: #2B2723;
-    height: 671px;
+    height: 600px;
     padding: 20px;
 
 }
