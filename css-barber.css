@@ -366,7 +366,7 @@ footer {
 
     .item {
         width: 240px;
-        max-height: 291px;
+        height: 291px;
         border-radius: 10px;
         padding: 30px;
         text-align: center;
@@ -486,18 +486,18 @@ footer {
 
         .item {
             width: 165px;
-            height: 200px;
+            
             padding: 10px;
         }
 
         .img-itens {
             width: 50px;
-            margin: 10px auto;
+            margin: 5px auto;
             padding: 0;
         }
 
         .texto-itensT {
-            font-size: 14px;
+            font-size: 10px;
             padding: 5px;
         }
 
