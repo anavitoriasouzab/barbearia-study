@@ -444,7 +444,7 @@ footer {
         justify-content: center;
     }
 
-
+}
     /* ======================================================
    MOBILE — até 480px
    (header/nav ficam ocultos )
@@ -486,8 +486,8 @@ footer {
 
         .item {
             width: 165px;
-            height: auto;
-            padding: 20px;
+            height: 200px;
+            padding: 10px;
         }
 
         .img-itens {
