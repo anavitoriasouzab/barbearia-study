@@ -222,7 +222,7 @@ h1 {
 
 .serviço {
     background-color: #675E5663;
-    width: 343px;
+    min-width: 343px;
     height: 418px;
     border-radius: 20px;
     color: white;
