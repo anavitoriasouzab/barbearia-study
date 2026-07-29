@@ -485,25 +485,25 @@ footer {
         }
 
         .item {
-            width: 165px;
-            
-            padding: 10px;
+            width: 165px;            
+            padding:5px;
+            height: 200px;
         }
 
         .img-itens {
             width: 50px;
-            margin: 5px auto;
+            margin: 10px auto;
             padding: 0;
         }
 
         .texto-itensT {
-            font-size: 10px;
+            font-size: 14px;
             padding: 5px;
         }
 
         .paragrafo-itensP {
-            font-size: 12px;
-            padding: 5px;
+            font-size: 10px;
+            padding: 5px auto;
             margin: auto;
         }
 
