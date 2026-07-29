@@ -27,7 +27,7 @@ header {
 
 .img-header {
     width: 180px;
-    opacity: 1;
+    opacity: 2;
     padding: 16px;
 }
 
@@ -47,11 +47,13 @@ a:hover {
 a.meulink-header {
     color: white;
     text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: 700;
+    font-style: bold;
+    padding: 10px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+
 }
 
 /* ===================== BANNER INICIAL ===================== */
@@ -73,7 +75,7 @@ a.meulink-header {
 }
 
 .paragrafo-inicial {
-    color: white;
+    color: #D7C4A3;
     font-size: 20px;
     line-height: 1.4;
     text-align: left;
@@ -105,9 +107,8 @@ h1 {
     width: 300px;
     height: 291px;
     display: inline-block;
-    margin: 0;
-    border-radius: 10px;
-    padding: 30px;
+    border-radius: 8px;
+    padding: 10px;
     text-align: center;
 }
 
@@ -123,7 +124,7 @@ h1 {
 .texto-itensT {
     font-style: normal;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
     letter-spacing: 0.02em;
     line-height: 20px;
@@ -134,9 +135,9 @@ h1 {
     opacity: 1;
     font-weight: 500;
     font-style: normal;
-    font-size: 14px;
-    padding: 10px;
-    margin: 15px auto;
+    font-size: 12px;
+    padding-bottom: 10px;
+    margin: 5px auto;
     text-align: center;
 }
 
@@ -144,34 +145,33 @@ h1 {
 
 .sobre-nos {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("./assets/1novo.jpg");
-    background-size: cover;
     background-position: center;
     border-radius: 10px;
-    width: calc(100% - 120px);
+    width: 100%;
     margin: 60px auto;
     padding: 80px 0;
 }
 
 .subtitulo-sobrenos {
     font-weight: 600;
-    font-size: 30px;
+    font-size: 28px;
     line-height: 100%;
     letter-spacing: -0.05em;
     margin: 20px 30px 40px 30px;
-    color: aliceblue;
+    color: #D7C4A3;
     padding-top: 50px;
     text-align: center;
 }
 
 .texto-sobreNos {
     font-weight: 400;
-    font-size: 15px;
+    font-size: 18px;
     line-height: 125%;
     letter-spacing: 0.05em;
     text-align: justify;
     margin: 30px auto 0 auto;
     width: 50%;
-    color: white;
+    color: #D7C4A3;
     font-style: normal;
     padding: 10px 0 80px 0;
 }
@@ -179,7 +179,7 @@ h1 {
 /* ===================== SERVIÇOS ===================== */
 
 .titulo-principal {
-    color: #D7C4A3;
+    color: white;
     text-align: center;
     margin: 40px auto 0 auto;
     display: flex;
@@ -203,7 +203,7 @@ h1 {
     background-color: #675E5663;
     width: 343px;
     max-width: 100%;
-    height: 418px;
+    height: 380px;
     border-radius: 20px;
     color: white;
     margin: 0;
@@ -224,15 +224,16 @@ h1 {
     margin-top: 25px;
     padding: 10px;
     text-align: center;
-    font-weight: 500;
-    font-size: 14px;
+    font-weight: 700;
+    font-size: 16px;
     line-height: 2px;
 }
 
 .texto-serviços {
-    margin: 10px auto;
-    width: 70%;
+    margin: 15px auto;
+    width: 80%;
     text-align: center;
+    font-weight: 300;
 }
 
 /* ===================== FOOTER ===================== */
@@ -357,7 +358,7 @@ footer {
     }
 
     .paragrafo-inicial {
-        color: white;
+
         font-size: 16px;
         width: 70%;
         text-align: center;
@@ -389,7 +390,7 @@ footer {
         width: 100%;
         margin: 0;
         border-radius: 0;
-        padding: 20px 0;
+
     }
 
     .subtitulo-sobrenos {
@@ -408,8 +409,7 @@ footer {
 
     .serviço {
         width: calc(50% - 20px);
-        min-width: 280px;
-        max-width: 343px;
+        min-width: 200px;
         height: auto;
         padding-bottom: 20px;
     }
@@ -419,8 +419,9 @@ footer {
     }
 
     .titulo-serviços {
-        font-size: 20px;
+        font-size: 22px;
         line-height: 1.3;
+
     }
 
     .texto-serviços {
@@ -445,144 +446,170 @@ footer {
     }
 
 }
-    /* ======================================================
+
+/* ======================================================
    MOBILE — até 480px
    (header/nav ficam ocultos )
    ====================================================== */
 
-    @media screen and (max-width: 480px) {
+@media screen and (max-width: 480px) {
 
-        header {
-            display: none;
-        }
-
-        .banner-inicial {
-            padding: 30px 20px;
-            width: 100%;
-            min-height: calc(100vh - 90px);
-        }
-
-        .logo-banner {
-            width: 200px;
-            padding-bottom: 10px;
-        }
-
-        .paragrafo-inicial {
-            font-size: 16px;
-            width: 90%;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 16px;
-            padding: 20px;
-            margin: 35px auto;
-        }
-
-        .itens-geral {
-            gap: 15px;
-            margin: 40px auto;
-        }
-
-        .item {
-            width: 165px;            
-            padding:5px;
-            height: 200px;
-        }
-
-        .img-itens {
-            width: 50px;
-            margin: 10px auto;
-            padding: 0;
-        }
-
-        .texto-itensT {
-            font-size: 14px;
-            padding: 5px;
-        }
-
-        .paragrafo-itensP {
-            font-size: 10px;
-            padding: 5px;
-            margin: auto;
-        }
-
-        .sobre-nos {
-            padding: 60px 15px;
-        }
-
-        .subtitulo-sobrenos {
-            font-size: 22px;
-            padding-top: 10px;
-        }
-
-        .texto-sobreNos {
-            width: 100%;
-            font-size: 14px;
-            padding: 30px;
-        }
-
-        .titulo-principal {
-            font-size: 22px;
-            margin: 30px auto;
-        }
-
-        .Banner-serviços {
-            gap: 15px;
-            margin: 20px auto;
-            padding: 0 15px;
-        }
-
-        .serviço {
-            width: 100%;
-            max-width: 340px;
-            height: auto;
-            padding-bottom: 20px;
-        }
-
-        .serviço img {
-            height: 160px;
-        }
-
-        .titulo-serviços {
-            font-size: 18px;
-            line-height: 1.3;
-        }
-
-        .texto-serviços {
-            font-size: 14px;
-            width: 85%;
-        }
-
-        footer {
-            padding: 20px;
-        }
-
-        .logotipo-footer {
-            width: 100%;
-            max-width: 220px;
-        }
-
-        .agendamento,
-        .link-footer,
-        .titulos-footer2 {
-            justify-content: center;
-            margin: 10px auto;
-            text-align: center;
-        }
-
-        .contatos-footer {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .titulos-footer {
-            text-align: center;
-            font-size: 20px;
-        }
-
-        .paragrafo-horarios {
-            text-align: center;
-            margin-left: 0;
-        }
+    header {
+        display: none;
     }
+
+    .banner-inicial {
+        padding: 30px 20px;
+        width: 100%;
+        min-height: calc(100vh - 90px);
+    }
+
+    .logo-banner {
+        width: 200px;
+        padding-bottom: 10px;
+    }
+
+    .paragrafo-inicial {
+        font-size: 16px;
+        width: 90%;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 16px;
+        padding: 20px;
+        margin: 35px auto;
+    }
+
+    .itens-geral {
+        gap: 10px;
+
+    }
+
+    .item {
+        width: 175px;
+        margin: 0 5px;
+        padding: 5px;
+        height: 200px;
+
+    }
+
+
+
+    .img-itens {
+        width: 60px;
+        margin: 20px auto 8px auto;
+
+    }
+
+    .texto-itensT {
+        font-size: 14px;
+        margin: 5px auto;
+        padding: 0;
+        font-weight: 700;
+
+    }
+
+    .paragrafo-itens {
+
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 130%;
+        letter-spacing: 1%;
+        padding: 3px;
+
+        text-align: center;
+
+    }
+
+
+
+
+
+    .sobre-nos {
+        padding: 60px 15px;
+    }
+
+    .subtitulo-sobrenos {
+        font-size: 22px;
+        padding-top: 10px;
+    }
+
+    .texto-sobreNos {
+        width: 100%;
+        font-size: 14px;
+        padding: 30px;
+    }
+
+    .titulo-principal {
+        font-size: 22px;
+        margin: 30px auto;
+    }
+
+    .Banner-serviços {
+        gap: 15px;
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+
+    .serviço {
+
+        width: 194px;
+
+        padding-bottom: 20px;
+    }
+
+    .serviço img {
+        height: 140px;
+        width: auto;
+    }
+
+    .titulo-serviços {
+        font-size: 16px;
+        line-height: 1.3;
+    }
+
+    .texto-serviços {
+        font-size: 16px;
+        width: 85%;
+    }
+
+    footer {
+        padding: 20px;
+
+    }
+
+    .logotipo-footer {
+        width: 100%;
+        max-width: 180px;
+    }
+
+    .agendamento,
+    .link-footer,
+    .titulos-footer2 {
+        justify-content: center;
+        margin: 10px auto;
+        text-align: center;
+    }
+
+    .contatos-footer {
+        margin-top: 16px;
+        text-align: center;
+    }
+
+    .titulos-footer {
+        text-align: center;
+        font-size: 18px;
+    }
+
+    .paragrafo-horarios {
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .link-footer {
+        font-size: 16px;
+        margin-bottom: 30px;
+
+    }
+}
