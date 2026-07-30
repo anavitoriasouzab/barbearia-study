@@ -19,11 +19,11 @@ body {
 
 header {
     width: 100%;
-    height: 100px;
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 50px;
+    padding: 15px 40px;
 }
 
 .hero-wrapper {
@@ -37,13 +37,13 @@ header {
     width: 15%;
     gap: 5px;
     opacity: 1;
-    padding: 16px;
+    padding: 5px;
 }
 
 nav {
     display: flex;
     align-items: center;
-    gap: 60px;
+    gap: 40px;
 }
 
 nav a {
@@ -77,15 +77,17 @@ a.meulink-header {
 }
 
 .logo-banner {
-    width: 250px;
+    display: none;
 }
 
 .paragrafo-inicial {
     color: #D7C4A3;
-    font-size: 20px;
+    font-size: 28px;
     line-height: 1.4;
-    text-align: left;
-    width: 50%;
+    text-align: justify;
+    align-items: left;
+    width: 38%;
+
 }
 
 h1 {
@@ -109,7 +111,7 @@ h1 {
 }
 
 .item {
-    background: #918b8b;
+    background: #675E5663;
     width: 300px;
     height: 291px;
     display: inline-block;
@@ -135,6 +137,7 @@ h1 {
     letter-spacing: 0.02em;
     line-height: 20px;
     padding: 10px;
+    color: white;
 }
 
 .paragrafo-itens {
@@ -145,6 +148,7 @@ h1 {
     padding-bottom: 10px;
     margin: 5px auto;
     text-align: center;
+    color: white;
 }
 
 /* ===================== SOBRE NÓS ===================== */
@@ -344,8 +348,9 @@ footer {
 
     nav a {
         margin-left: 10px;
-        margin-right: 15px;
-        font-size: 16px;
+        margin-right: 5px;
+        font-size: 14px;
+        gap: 8px;
     }
 
     .banner-inicial {
@@ -462,13 +467,13 @@ footer {
     }
 
     .banner-inicial {
-        padding: 30px 20px;
+        padding: 36px;
         width: 100%;
         min-height: calc(100vh - 90px);
     }
 
     .logo-banner {
-        width: 200px;
+        width: 180px;
         padding-bottom: 10px;
     }
 
@@ -486,6 +491,7 @@ footer {
 
     .itens-geral {
         gap: 10px;
+        margin: 20px 10px;
     }
 
     .item {
