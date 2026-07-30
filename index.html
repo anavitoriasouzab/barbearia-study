@@ -11,13 +11,15 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap"
         rel="stylesheet">
+    <script src="https://kit.fontawesome.com/3c44dcf27f.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
     <div class="hero-wrapper">
 
-    <header>
+       <header>
+    <div class="header-inner">
         <img class="img-header" src="./assets/Group 43.png" alt="logotipo-barber">
         <nav>
             <a href="#">Home</a>
@@ -25,18 +27,19 @@
             <a href="#">Serviços</a>
             <a href="#">Contato</a>
         </nav>
-    </header>
+    </div>
+</header>
 
-    <section class="banner-inicial">
-        <div class="conteudo-banner">
-            <img class="logo-banner" src="./assets/Group 43.png" alt="logo-amarela"> 
-            <p class="paragrafo-inicial">Unimos tradição de barbearia raiz com personalidade forte, criando uma
-                experiência única para homens que
-                valorizam estilo, presença e respeito.</p>
-        </div>
-    </section>
+        <section class="banner-inicial">
+            <div class="conteudo-banner">
+                <img class="logo-banner" src="./assets/Group 43.png" alt="logo-amarela">
+                <p class="paragrafo-inicial">Unimos tradição de barbearia raiz com personalidade forte, criando uma
+                    experiência única para homens que
+                    valorizam estilo, presença e respeito.</p>
+            </div>
+        </section>
 
-</div>
+    </div>
 
     <div>
         <h1>Do clássico ao moderno, cada corte reflete atitude e personalidade.</h1>
@@ -100,40 +103,46 @@
         <article class="serviço">
             <img src="./assets/3.png" alt="maquina-de-barbear">
             <h2 class="titulo-serviços"> Combo Brabo</h2>
-            <p class="texto-serviços" >Corte e barba no mesmo atendimento, com preço especial.</p>
+            <p class="texto-serviços">Corte e barba no mesmo atendimento, com preço especial.</p>
         </article>
 
     </section>
 
     <footer>
-        <div>
-            <img class="logotipo-footer" src="./assets/footer123.svg" alt="logotipo">
-        </div>
+    <div class="footer-logo">
+        <img class="logotipo-footer" src="./assets/footer123.svg" alt="logotipo">
+    </div>
 
-        <article class="horarios-footer">
-            <h3 class="titulos-footer">Horários</h3>
-            <p class="paragrafo-horarios">Segunda a Sexta: 08:00 ás 20:00</p>
+    <div class="footer-content">
+
+        <div class="footer-box">
+            <h3 class="titulos-footer"><i class="fa-solid fa-clock"></i> Horários</h3>
+            <p class="paragrafo-horarios">Segunda a Sexta: 08:00 às 20:00</p>
             <p class="paragrafo-horarios">Sábado: 9:00h às 16:00h</p>
-            <h3 class="titulos-footer">Endereço</h3>
-            <p class="paragrafo-horarios">Rua barroso-36, Manaus AM</p>
-        </article>
-
-        <article class="contatos-footer">
-            <h3 class="titulos-footer">Contatos</h3>
-            <p class="paragrafo-horarios">contato@barbeariabarbabrava.com</p>
-        </article>
-        <div class="agendamento">
-            <p class="titulos-footer2">Agende um horário!</p>
         </div>
 
-                <div>
-                    <a class="link-footer" href="https://wa.me/5592999999999" target="_blank">(92)99999-9999</a>
-                </div>
+        <div class="footer-box">
+            <h3 class="titulos-footer"><i class="fa-solid fa-location-dot"></i> Endereço</h3>
+            <p class="paragrafo-horarios">Rua Barroso, 36 — Manaus, AM</p>
+        </div>
 
-        
+        <div class="footer-box">
+            <h3 class="titulos-footer"><i class="fa-solid fa-envelope"></i> Contatos</h3>
+            <p class="paragrafo-horarios">contato@barbeariabarbabrava.com</p>
+            <a class="link-footer" href="https://wa.me/5592999999999" target="_blank" rel="noopener" aria-label="Falar no WhatsApp: (92) 99999-9999">
+                <i class="fa-brands fa-whatsapp"></i> (92) 99999-9999
+            </a>
+        </div>
 
-        <p class="copy-footer"> &copy; 2026 Barbearia Barba Brava. Todos os direitos reservados.</p>
-    </footer>
+        <div class="footer-box footer-box-agenda">
+            <h3 class="titulos-footer"><i class="fa-solid fa-calendar"></i> Agende um horário!</h3>
+            <a class="btn-agendar" href="#" aria-label="Ir para a seção de agendamento">Agendar agora</a>
+        </div>
+
+    </div>
+
+    <p class="copy-footer">&copy; 2026 Barbearia Barba Brava. Todos os direitos reservados.</p>
+</footer>
 
 
 

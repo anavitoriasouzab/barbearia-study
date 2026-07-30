@@ -22,8 +22,16 @@ header {
     height: 120px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 15px 40px;
+}
+
+.header-inner {
+    width: 100%;
+    max-width: 1600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .hero-wrapper {
@@ -34,7 +42,9 @@ header {
 }
 
 .img-header {
-    width: 15%;
+    height: clamp(40px, 5vw, 75px); 
+    width: auto;
+    max-width: 220px;
     gap: 5px;
     opacity: 1;
     padding: 5px;
@@ -82,11 +92,12 @@ a.meulink-header {
 
 .paragrafo-inicial {
     color: #D7C4A3;
-    font-size: 28px;
+    font-size: 20px;
     line-height: 1.4;
     text-align: justify;
     align-items: left;
-    width: 38%;
+    max-width: 480px;
+    margin: 5px auto 5px 50px;
 
 }
 
@@ -260,72 +271,107 @@ footer {
     background-image: url("./assets/footer-img.png");
     background-color: #2B2723;
     background-size: cover;
+    background-position: center;
     height: auto;
-    padding: 20px;
+    padding: 90px 80px 35px;
+}
+
+.footer-logo {
+    text-align: center;
+    margin-bottom: 60px;
 }
 
 .logotipo-footer {
-    margin: 30px auto;
-    display: flex;
-    justify-content: center;
+    margin: 0 auto;
     width: 350px;
     max-width: 80%;
 }
 
-.horarios-footer,
-.contatos-footer {
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: start;
+}
+
+.footer-box {
+    padding: 0 30px;
+    border-left: 1px solid rgba(215, 196, 163, 0.25);
     color: #FFFFFF;
     opacity: 90%;
 }
 
+.footer-box:first-child {
+    border-left: none;
+    padding-left: 0;
+}
+
 .titulos-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-weight: 600;
     font-size: 20px;
     line-height: 100%;
-    margin: 15px;
+    margin: 0 0 15px 0;
     color: #D7C4A3;
 }
 
 .paragrafo-horarios {
-    margin-left: 15px;
+    margin-left: 0;
     margin-bottom: 10px;
-    line-height: 100%;
+    line-height: 140%;
     color: #D7C4A3;
-}
-
-.contatos-footer {
-    margin-top: 50px;
-    color: #D7C4A3;
-}
-
-.agendamento {
-    color: #D7C4A3;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 100%;
-    text-decoration: none;
-    margin-right: 10px;
-    margin-left: auto;
-    display: flex;
-    justify-content: flex-end;
+    cursor: pointer;
 }
 
 .link-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     color: #D7C4A3;
     font-weight: 300;
     font-size: 16px;
     line-height: 100%;
     text-decoration: none;
-    display: flex;
-    justify-content: flex-end;
     cursor: pointer;
-    margin: 15px 15px 15px auto;
+    margin-top: 15px;
+    transition: color .2s;
 }
 
-.titulos-footer2 {
-    margin-left: 1px;
-    display: flex;
-    justify-content: flex-end;
+.link-footer:hover,
+.link-footer:focus-visible {
+    color: #FFFFFF;
+}
+
+.btn-agendar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 200px;
+    height: 48px;
+    margin-top: 12px;
+    border: 1px solid #D7C4A3;
+    border-radius: 4px;
+    color: #D7C4A3;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background .25s, color .25s;
+}
+
+.btn-agendar:hover,
+.btn-agendar:focus-visible {
+    background: #D7C4A3;
+    color: #2B2723;
+}
+
+.link-footer:focus-visible,
+.btn-agendar:focus-visible {
+    outline: 2px solid #FFFFFF;
+    outline-offset: 3px;
 }
 
 .copy-footer {
@@ -333,8 +379,10 @@ footer {
     font-weight: 400;
     font-size: 14px;
     line-height: 100%;
-    margin: 50px auto 0 auto;
+    margin: 60px auto 0 auto;
     text-align: center;
+    padding-top: 25px;
+    border-top: 1px solid rgba(215, 196, 163, 0.2);
 }
 
 
@@ -348,7 +396,7 @@ footer {
     }
 
     .img-header {
-        height: 40px;
+        height: 52px;
         width: auto;
         padding: 0;
         margin: 0;
@@ -446,20 +494,40 @@ footer {
         font-size: 16px;
     }
 
+    .footer-content {
+        grid-template-columns: 1fr; /* empilha em coluna única abaixo de 900px */
+        gap: 28px;
+    }
+
+    .footer-box {
+        border-left: none;
+        border-top: 1px solid rgba(215, 196, 163, 0.25);
+        padding: 28px 0 0 0;
+        text-align: center;
+    }
+
+    .footer-box:first-child {
+        border-top: none;
+        padding-top: 0;
+    }
+
+    .titulos-footer {
+        justify-content: center;
+    }
+
+    .link-footer {
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .btn-agendar {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     .logotipo-footer {
         max-width: 270px;
-    }
-
-    .titulos-footer,
-    .titulos-footer2,
-    .paragrafo-horarios {
-        text-align: center;
-        margin: 15px auto;
-    }
-
-    a.link-footer {
-        align-items: center;
-        justify-content: center;
     }
 }
 
@@ -585,7 +653,7 @@ footer {
     }
 
     footer {
-        padding: 20px;
+        padding: 50px 20px 25px;
     }
 
     .logotipo-footer {
@@ -593,31 +661,7 @@ footer {
         max-width: 180px;
     }
 
-    .agendamento,
-    .link-footer,
-    .titulos-footer2 {
-        justify-content: center;
-        margin: 10px auto;
-        text-align: center;
-    }
-
-    .contatos-footer {
-        margin-top: 16px;
-        text-align: center;
-    }
-
     .titulos-footer {
-        text-align: center;
         font-size: 18px;
-    }
-
-    .paragrafo-horarios {
-        text-align: center;
-        margin-left: 0;
-    }
-
-    .link-footer {
-        font-size: 16px;
-        margin-bottom: 30px;
     }
 }
