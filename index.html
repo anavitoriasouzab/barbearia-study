@@ -15,37 +15,45 @@
 </head>
 
 <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
     <div class="hero-wrapper">
 
-       <header>
-    <div class="header-inner">
-        <img class="img-header" src="./assets/Group 43.png" alt="logotipo-barber">
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Sobre Nós</a>
-            <a href="#">Serviços</a>
-            <a href="#">Contato</a>
-        </nav>
-    </div>
-</header>
+        <header>
+            <div class="header-inner">
+                <a class="brand" href="#inicio" aria-label="Barba Brava — início">
+                    <img class="img-header" src="./assets/Group 43.png" alt="Barbearia Barba Brava">
+                </a>
+                <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
+                    <span class="sr-only">Abrir menu</span><i class="fa-solid fa-bars" aria-hidden="true"></i>
+                </button>
+                <nav id="menu-principal" aria-label="Navegação principal">
+                    <a href="#inicio">Início</a>
+                    <a href="#sobre">Sobre nós</a>
+                    <a href="#servicos">Serviços</a>
+                    <a href="#contato">Contato</a>
+                </nav>
+            </div>
+        </header>
 
-        <section class="banner-inicial">
+        <section class="banner-inicial" id="inicio">
             <div class="conteudo-banner">
                 <img class="logo-banner" src="./assets/Group 43.png" alt="logo-amarela">
                 <p class="paragrafo-inicial">Unimos tradição de barbearia raiz com personalidade forte, criando uma
                     experiência única para homens que
                     valorizam estilo, presença e respeito.</p>
+                <a class="btn-primary" href="#agendamento">Agende seu horário <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
             </div>
         </section>
 
     </div>
 
-    <div>
-        <h1>Do clássico ao moderno, cada corte reflete atitude e personalidade.</h1>
-    </div>
+    <main id="conteudo">
+        <section class="intro" aria-labelledby="intro-title">
+            <h1 id="intro-title">Do clássico ao moderno, cada corte carrega atitude e personalidade.</h1>
+        </section>
 
-    <section class="itens-geral">
+    <section class="itens-geral" aria-label="Diferenciais da Barba Brava">
 
         <article class="item">
             <img class="img-itens" src="./assets/Barber Scissors.png" alt="tesoura-de-barbeiro">
@@ -73,21 +81,23 @@
 
     </section>
 
-    <section class="sobre-nos">
+    <section class="sobre-nos" id="sobre" aria-labelledby="sobre-title">
 
         <div>
-            <h3 class="subtitulo-sobrenos"> Sobre Nós</h3>
-            <p class="texto-sobreNos"> Há mais de 5 anos no mercado, a Braba Brava é referência em estilo masculino,
+            <h2 class="subtitulo-sobrenos" id="sobre-title">Sobre nós</h2>
+            <p class="texto-sobreNos">Há mais de 5 anos no mercado, a Barba Brava é referência em estilo masculino,
                 unindo tradição e atitude em
                 cada corte. Com nota 5.0 nas avaliações dos clientes, oferecemos um atendimento de respeito, ambiente
                 confortável e resultados que impõem presença.</p>
         </div>
 
     </section>
-    <div class="titulo">
-        <h2 class="titulo-principal">Nossos Serviços</h2>
-    </div>
-    <section class="Banner-serviços">
+    <section class="servicos" id="servicos" aria-labelledby="servicos-title">
+        <div class="titulo">
+            <h2 class="titulo-principal" id="servicos-title">Nossos serviços</h2>
+            <p class="subtitulo-servicos">Escolha seu cuidado. A gente cuida do restante.</p>
+        </div>
+        <div class="Banner-serviços">
 
         <article class="serviço">
             <img src="./assets/1.png" alt="navalha-sobre-o-pote">
@@ -106,43 +116,124 @@
             <p class="texto-serviços">Corte e barba no mesmo atendimento, com preço especial.</p>
         </article>
 
+        </div>
     </section>
 
-    <footer>
-    <div class="footer-logo">
-        <img class="logotipo-footer" src="./assets/footer123.svg" alt="logotipo">
-    </div>
+    <section class="agendamento" id="agendamento" aria-labelledby="agendamento-title">
+        <div class="agendamento-content">
+            <p class="eyebrow">BARBA BRAVA</p>
+            <h2 id="agendamento-title">Seu próximo corte começa aqui.</h2>
+            <p>Escolha os detalhes abaixo. Ao confirmar, enviamos sua solicitação pronta pelo WhatsApp.</p>
+            <form class="booking-form" id="booking-form">
+                <div class="form-field">
+                    <label for="nome">Seu nome</label>
+                    <input id="nome" name="nome" type="text" autocomplete="name" required placeholder="Como podemos te chamar?">
+                </div>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="servico">Serviço</label>
+                        <select id="servico" name="servico" required>
+                            <option value="">Selecione</option>
+                            <option>Corte masculino</option>
+                            <option>Design de barba</option>
+                            <option>Combo Brabo</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="data">Data desejada</label>
+                        <input id="data" name="data" type="date" required>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label for="horario">Horário preferido</label>
+                    <select id="horario" name="horario" required>
+                        <option value="">Selecione</option>
+                        <option>08:00</option><option>09:00</option><option>10:00</option><option>11:00</option>
+                        <option>13:00</option><option>14:00</option><option>15:00</option><option>16:00</option>
+                        <option>17:00</option><option>18:00</option><option>19:00</option>
+                    </select>
+                </div>
+                <button class="btn-primary" type="submit"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Solicitar horário</button>
+                <p class="form-feedback" id="form-feedback" aria-live="polite"></p>
+            </form>
+        </div>
+    </section>
 
-    <div class="footer-content">
+    <section class="galeria" id="galeria" aria-labelledby="galeria-title">
+        <div class="section-heading">
+            <p class="eyebrow">NOSSA ESSÊNCIA</p>
+            <h2 id="galeria-title">Barbearia com presença.</h2>
+        </div>
+        <div class="gallery-grid">
+            <img src="./assets/sobre nós-banner.png" alt="Atendimento de barba na Barba Brava">
+            <img src="./assets/novo-banner.jpg" alt="Detalhe de ferramentas de barbearia">
+        </div>
+    </section>
 
-        <div class="footer-box">
-            <h3 class="titulos-footer"><i class="fa-solid fa-clock"></i> Horários</h3>
-            <p class="paragrafo-horarios">Segunda a Sexta: 08:00 às 20:00</p>
-            <p class="paragrafo-horarios">Sábado: 9:00h às 16:00h</p>
+    <section class="depoimentos" aria-labelledby="depoimentos-title">
+        <div class="section-heading">
+            <p class="eyebrow">QUEM VEM, VOLTA</p>
+            <h2 id="depoimentos-title">Atendimento que deixa marca.</h2>
+        </div>
+        <div class="testimonials-grid">
+            <figure><blockquote>“Ambiente ótimo, atendimento atencioso e corte impecável.”</blockquote><figcaption>Cliente Barba Brava</figcaption></figure>
+            <figure><blockquote>“Profissionais que entendem o estilo que você procura.”</blockquote><figcaption>Cliente Barba Brava</figcaption></figure>
+            <figure><blockquote>“Da recepção ao acabamento, experiência completa.”</blockquote><figcaption>Cliente Barba Brava</figcaption></figure>
+        </div>
+    </section>
+
+    <section class="localizacao" aria-labelledby="localizacao-title">
+        <div class="location-copy">
+            <p class="eyebrow">ONDE ESTAMOS</p>
+            <h2 id="localizacao-title">Sua barbearia em Manaus.</h2>
+            <p>Rua Barroso, 36 — Manaus, AM</p>
+            <a class="btn-outline" href="https://maps.google.com/?q=Rua+Barroso,+36,+Manaus,+AM" target="_blank" rel="noopener"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Abrir no mapa</a>
+        </div>
+        <iframe class="map" title="Mapa da Barbearia Barba Brava" src="https://www.google.com/maps?q=Rua%20Barroso%2C%2036%2C%20Manaus%2C%20AM&output=embed" loading="lazy"></iframe>
+    </section>
+    </main>
+
+    <footer id="contato">
+        <div class="footer-logo">
+            <img class="logotipo-footer" src="./assets/footer123.svg" alt="logotipo">
         </div>
 
-        <div class="footer-box">
-            <h3 class="titulos-footer"><i class="fa-solid fa-location-dot"></i> Endereço</h3>
-            <p class="paragrafo-horarios">Rua Barroso, 36 — Manaus, AM</p>
+        <div class="footer-content">
+
+            <div class="footer-box">
+                <h3 class="titulos-footer"><i class="fa-solid fa-clock"></i> Horários</h3>
+                <p class="paragrafo-horarios">Segunda a sexta: 08:00 às 20:00</p>
+                <p class="paragrafo-horarios">Sábado: 09:00 às 16:00</p>
+            </div>
+
+            <div class="footer-box">
+                <h3 class="titulos-footer"><i class="fa-solid fa-location-dot"></i> Endereço</h3>
+                <a class="link-footer" href="https://maps.google.com/?q=Rua+Barroso,+36,+Manaus,+AM" target="_blank" rel="noopener">Rua Barroso, 36 — Manaus, AM</a>
+            </div>
+
+            <div class="footer-box">
+                <h3 class="titulos-footer"><i class="fa-solid fa-envelope"></i> Contatos</h3>
+                <a class="link-footer link-email" href="mailto:contato@barbeariabarbabrava.com">contato@barbeariabarbabrava.com</a>
+                <a class="link-footer" href="https://wa.me/5592999999999" target="_blank" rel="noopener"
+                    aria-label="Falar no WhatsApp: (92) 99999-9999">
+                    <i class="fa-brands fa-whatsapp"></i> (92) 99999-9999
+                </a>
+                <a class="link-footer" href="https://instagram.com" target="_blank" rel="noopener"><i class="fa-brands fa-instagram" aria-hidden="true"></i> Siga no Instagram</a>
+            </div>
+
+            <div class="footer-box footer-box-agenda">
+                <h3 class="titulos-footer"><i class="fa-solid fa-calendar"></i> Agende um horário!</h3>
+                <a class="btn-agendar" href="#agendamento">Agendar agora</a>
+            </div>
+
         </div>
 
-        <div class="footer-box">
-            <h3 class="titulos-footer"><i class="fa-solid fa-envelope"></i> Contatos</h3>
-            <p class="paragrafo-horarios">contato@barbeariabarbabrava.com</p>
-            <a class="link-footer" href="https://wa.me/5592999999999" target="_blank" rel="noopener" aria-label="Falar no WhatsApp: (92) 99999-9999">
-                <i class="fa-brands fa-whatsapp"></i> (92) 99999-9999
-            </a>
-        </div>
+        <p class="copy-footer">&copy; 2026 Barbearia Barba Brava. Todos os direitos reservados.</p>
+    </footer>
 
-        <div class="footer-box footer-box-agenda">
-            <h3 class="titulos-footer"><i class="fa-solid fa-calendar"></i> Agende um horário!</h3>
-            <a class="btn-agendar" href="#" aria-label="Ir para a seção de agendamento">Agendar agora</a>
-        </div>
+    <a class="whatsapp-float" href="https://wa.me/5592999999999?text=Olá!%20Gostaria%20de%20agendar%20um%20horário." target="_blank" rel="noopener" aria-label="Agendar pelo WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
 
-    </div>
-
-    <p class="copy-footer">&copy; 2026 Barbearia Barba Brava. Todos os direitos reservados.</p>
-</footer>
+    <script src="script.js"></script>
 
 
 
