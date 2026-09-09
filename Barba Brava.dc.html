@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barbearia Barba Brava</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #0A0908; color: #fff; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+  a { color: #D7C4A3; }
+  a:hover { color: #F3E6CA; }
+  ::selection { background: #D7C4A3; color: #0A0908; }
+  @keyframes bb-marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
+  @keyframes bb-bob { 0%,100% { transform: translateY(0); opacity: .55; } 50% { transform: translateY(9px); opacity: 1; } }
+  @keyframes bb-pulse { 0% { box-shadow: 0 0 0 0 rgba(37,211,102,.55); } 70% { box-shadow: 0 0 0 18px rgba(37,211,102,0); } 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); } }
+  input, select, button, textarea { font-family: 'Montserrat', sans-serif; }
+  select { accent-color: #D7C4A3; color-scheme: dark; }
+  select option { color: #EDE6DA; background: #17130F; padding: 10px; }
+  select option:checked, select option:hover, select option:focus { color: #17130F; background: #D7C4A3; }
+  @media (max-width: 760px) {
+    .bb-nav-links { display: none !important; }
+    #inicio { min-height: 78vh !important; }
+    header[data-bb-header] { position: absolute !important; }
+  }
+  @media (max-width: 480px) {
+    .bb-form-row { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 560px) {
+    .bb-cal-widget { grid-template-columns: 1fr !important; }
+    .bb-cal-widget > div:first-child { border-right: none !important; border-bottom: 1px solid rgba(215,196,163,.16); }
+  }
+</style>
+</helmet>
+
+<div style="background: #0A0908; min-height: 100vh">
+
+  <header data-bb-header="1" style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; justify-content: center; padding: 20px clamp(20px, 5vw, 64px); transition: background .35s ease, padding .35s ease, backdrop-filter .35s ease; background: linear-gradient(180deg, rgba(10,9,8,.55), transparent)">
+    <div style="width: 100%; max-width: 1440px; display: flex; align-items: center; justify-content: space-between; gap: 24px">
+      <a href="#inicio" aria-label="Barba Brava, início" style="display: flex; align-items: center; text-decoration: none">
+        <img src="./assets/logo.png" alt="Barbearia Barba Brava" style="height: clamp(46px, 5vw, 68px); width: auto; display: block">
+      </a>
+      <nav style="display: flex; align-items: center; gap: clamp(18px, 2.4vw, 40px)">
+        <a href="#sobre" data-bb-nav="1" class="bb-nav-links" style="position: relative; color: #EDE6DA; font-size: 14px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; padding: 6px 0" style-hover="color: #D7C4A3; text-decoration: underline; text-underline-offset: 6px">Sobre</a>
+        <a href="#servicos" data-bb-nav="1" class="bb-nav-links" style="position: relative; color: #EDE6DA; font-size: 14px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; padding: 6px 0" style-hover="color: #D7C4A3; text-decoration: underline; text-underline-offset: 6px">Serviços</a>
+        <a href="#galeria" data-bb-nav="1" class="bb-nav-links" style="position: relative; color: #EDE6DA; font-size: 14px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; padding: 6px 0" style-hover="color: #D7C4A3; text-decoration: underline; text-underline-offset: 6px">Galeria</a>
+        <a href="#contato" data-bb-nav="1" class="bb-nav-links" style="position: relative; color: #EDE6DA; font-size: 14px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; padding: 6px 0" style-hover="color: #D7C4A3; text-decoration: underline; text-underline-offset: 6px">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="inicio" style="position: relative; min-height: 100vh; display: flex; align-items: flex-end; overflow: hidden">
+    <div data-bb-heroimg="1" style="position: absolute; inset: -8% 0 -8% 0; overflow: hidden">
+      <div data-bb-hero-slide="1" style="position: absolute; inset: 0; overflow: hidden">
+        <img src="./assets/hero.jpg" alt="Barbeiro atendendo cliente na Barba Brava" style="width: 100%; height: 100%; object-fit: cover; object-position: 60% center; display: block; transform-origin: center; will-change: transform">
+      </div>
+      <div data-bb-hero-slide="1" style="position: absolute; inset: 0; overflow: hidden; opacity: 0">
+        <img src="./assets/nova%20foto.jpg" alt="Barbeiro aparando a barba com máquina" style="width: 100%; height: 100%; object-fit: cover; display: block; transform-origin: center; will-change: transform">
+      </div>
+      <div data-bb-hero-slide="1" style="position: absolute; inset: 0; overflow: hidden; opacity: 0">
+        <img src="./assets/gal-2.jpg" alt="Atendimento de barba com navalha" style="width: 100%; height: 100%; object-fit: cover; display: block; transform-origin: center; will-change: transform">
+      </div>
+      <div data-bb-hero-slide="1" style="position: absolute; inset: 0; overflow: hidden; opacity: 0">
+        <img src="./assets/gal-3.jpg" alt="Acabamento do corte na máquina" style="width: 100%; height: 100%; object-fit: cover; display: block; transform-origin: center; will-change: transform">
+      </div>
+    </div>
+    <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(105deg, rgba(10,9,8,.94) 0%, rgba(10,9,8,.78) 38%, rgba(10,9,8,.28) 68%, rgba(10,9,8,.72) 100%)"></div>
+    <div style="position: absolute; inset: auto 0 0 0; height: 45%; pointer-events: none; background: linear-gradient(180deg, transparent, #0A0908)"></div>
+
+    <div style="position: relative; width: 100%; max-width: 1440px; margin: 0 auto; padding: clamp(110px, 22vw, 150px) clamp(20px, 5vw, 64px) clamp(56px, 7vh, 96px); display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 40px">
+      <div style="max-width: 720px">
+        <h1 style="margin: 0; font-family: 'Oswald', sans-serif; font-weight: 600; font-size: clamp(2.7rem, 7.3vw, 6.4rem); line-height: .9; letter-spacing: .005em; text-transform: uppercase; color: #fff; text-wrap: balance">
+          <span data-bb-line="1" style="display: block; overflow: hidden; margin-bottom: -.14em"><span data-bb-line-inner="1" style="display: block; padding: .16em 0 .14em">Estilo que</span></span>
+          <span data-bb-line="1" style="display: block; overflow: hidden; margin-bottom: -.14em"><span data-bb-line-inner="1" style="display: block; padding: .16em 0 .14em; color: #D7C4A3">impõe</span></span>
+          <span data-bb-line="1" style="display: block; overflow: hidden"><span data-bb-line-inner="1" style="display: block; padding: .16em 0 .14em">presença.</span></span>
+        </h1>
+        <p data-bb-hero="1" style="max-width: 470px; margin: 30px 0 34px; color: #E4DACB; font-size: clamp(1rem, 1.2vw, 1.12rem); font-weight: 400; line-height: 1.65">Tradição de barbearia raiz com atitude forte, pra quem valoriza estilo, presença e respeito em cada atendimento.</p>
+        <div data-bb-hero="1" style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+          <a href="#agendamento" style="display: inline-flex; align-items: center; gap: 12px; min-height: 56px; padding: 0 30px; border: 1px solid #D7C4A3; border-radius: 100px; background: #D7C4A3; color: #17130F; font-size: 14px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; box-shadow: 0 14px 34px rgba(215,196,163,.18); transition: transform .25s, background .25s, color .25s" style-hover="transform: translateY(-3px); background: transparent; color: #D7C4A3">Agende seu horário <span style="font-size: 18px; line-height: 1">→</span></a>
+          <a href="#servicos" style="display: inline-flex; align-items: center; gap: 10px; min-height: 56px; padding: 0 26px; border: 1px solid rgba(215,196,163,.4); border-radius: 100px; color: #D7C4A3; font-size: 14px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; transition: border-color .25s, background .25s" style-hover="border-color: #D7C4A3; background: rgba(215,196,163,.08)">Ver serviços</a>
+        </div>
+      </div>
+
+      <div data-bb-hero="1" style="display: flex; align-items: flex-end; gap: clamp(24px, 4vw, 56px)">
+        <div>
+          <div style="font-family: 'Oswald', sans-serif; font-size: clamp(2.4rem, 4vw, 3.4rem); font-weight: 600; line-height: 1; color: #fff"><span data-bb-count="5" data-bb-suffix="+">5+</span></div>
+          <div style="margin-top: 8px; color: #A79C8C; font-size: 11px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase">Anos de casa</div>
+        </div>
+        <div style="width: 1px; height: 58px; background: rgba(215,196,163,.28)"></div>
+        <div>
+          <div style="font-family: 'Oswald', sans-serif; font-size: clamp(2.4rem, 4vw, 3.4rem); font-weight: 600; line-height: 1; color: #D7C4A3">5.0</div>
+          <div style="margin-top: 8px; color: #A79C8C; font-size: 11px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase">Nota dos clientes</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; animation: bb-bob 2.4s ease-in-out infinite; pointer-events: none">
+      <span style="color: #A79C8C; font-size: 10px; letter-spacing: .24em; text-transform: uppercase">Role</span>
+      <span style="width: 1px; height: 34px; background: linear-gradient(180deg, #D7C4A3, transparent)"></span>
+    </div>
+  </section>
+
+  <svg width="0" height="0" style="position: absolute; overflow: hidden">
+    <defs>
+      <symbol id="bb-pole" viewBox="0 0 24 28">
+        <rect x="5" y="1.5" width="14" height="3" rx="1.5" fill="currentColor"></rect>
+        <rect x="7" y="4.5" width="10" height="19" rx="5" fill="currentColor"></rect>
+        <rect x="7" y="10.2" width="10" height="2.6" fill="#0A0908" fill-opacity=".55"></rect>
+        <rect x="7" y="17.4" width="10" height="2.6" fill="#0A0908" fill-opacity=".55"></rect>
+        <rect x="5" y="23.5" width="14" height="3" rx="1.5" fill="currentColor"></rect>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div style="border-top: 1px solid rgba(215,196,163,.16); border-bottom: 1px solid rgba(215,196,163,.16); background: #100E0C; overflow: hidden; padding: 20px 0">
+    <div style="display: flex; width: max-content; animation: bb-marquee 26s linear infinite">
+      <div style="display: flex; align-items: center; gap: 44px; padding-right: 44px; font-family: 'Oswald', sans-serif; font-size: clamp(1.1rem, 2vw, 1.6rem); font-weight: 400; letter-spacing: .14em; text-transform: uppercase; color: rgba(243,230,202,.5); white-space: nowrap">
+        <span>Corte masculino</span><svg width="16" height="19" viewBox="0 0 24 28" aria-hidden="true" style="display: inline-block; vertical-align: -4px; color: #D7C4A3; flex: none"><use href="#bb-pole"></use></svg><span>Design de barba</span><svg width="16" height="19" viewBox="0 0 24 28" aria-hidden="true" style="display: inline-block; vertical-align: -4px; color: #D7C4A3; flex: none"><use href="#bb-pole"></use></svg><span>Combo brabo</span><svg width="16" height="19" viewBox="0 0 24 28" aria-hidden="true" style="display: inline-block; vertical-align: -4px; color: #D7C4A3; flex: none"><use href="#bb-pole"></use></svg><span>Navalha quente</span><svg width="16" height="19" viewBox="0 0 24 28" aria-hidden="true" style="display: inline-block; vertical-align: -4px; color: #D7C4A3; flex: none"><use href="#bb-pole"></use></svg><span>Tradição raiz</span><svg width="16" height="19" viewBox="0 0 24 28" aria-hidden="true" style="display: inline-block; vertical-align: -4px; color: #D7C4A3; flex: none"><use href="#bb-pole"></use></svg>
+      </div>
+      <div aria-hidden="true" style="display: flex; align-items: center; gap: 44px; padding-right: 44px; font-family: 'Oswald', sans-serif; font-size: clamp(1.1rem, 2vw, 1.6rem); font-weight: 400; letter-spacing: .14em; text-transform: uppercase; color: rgba(243,230,202,.5); white-space: nowrap">
+        <span>Corte masculino</span><svg width="16" height="19" viewBox="0 0 24 28" aria-hidden="true" style="display: inline-block; vertical-align: -4px; color: #D7C4A3; flex: none"><use href="#bb-pole"></use></svg><span>Design de barba</span><svg width="16" height="19" viewBox="0 0 24 28" aria-hidden="true" style="display: inline-block; vertical-align: -4px; color: #D7C4A3; flex: none"><use href="#bb-pole"></use></svg><span>Combo brabo</span><svg width="16" height="19" viewBox="0 0 24 28" aria-hidden="true" style="display: inline-block; vertical-align: -4px; color: #D7C4A3; flex: none"><use href="#bb-pole"></use></svg><span>Navalha quente</span><svg width="16" height="19" viewBox="0 0 24 28" aria-hidden="true" style="display: inline-block; vertical-align: -4px; color: #D7C4A3; flex: none"><use href="#bb-pole"></use></svg><span>Tradição raiz</span><svg width="16" height="19" viewBox="0 0 24 28" aria-hidden="true" style="display: inline-block; vertical-align: -4px; color: #D7C4A3; flex: none"><use href="#bb-pole"></use></svg>
+      </div>
+    </div>
+  </div>
+
+  <section style="max-width: 1440px; margin: 0 auto; padding: clamp(80px, 11vh, 140px) clamp(20px, 5vw, 64px)">
+    <h2 data-bb-reveal="1" style="max-width: 900px; margin: 0 0 60px; font-family: 'Oswald', sans-serif; font-weight: 400; font-size: clamp(1.6rem, 3.1vw, 2.7rem); line-height: 1.22; letter-spacing: .01em; color: #F3E6CA; text-wrap: pretty">Do clássico ao moderno, <span style="color: #6E655A">cada corte carrega</span> atitude e personalidade.</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: rgba(215,196,163,.16)">
+      <article data-bb-reveal="1" style="background: #0A0908; padding: 40px 32px 44px; transition: background .35s ease" style-hover="background: #14110E">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px">
+          <img src="./assets/ic-scissors.png" alt="" style="width: 54px; height: 54px; object-fit: contain; display: block; opacity: .92">
+          <span style="font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: .2em; color: #D7C4A3">01</span>
+        </div>
+        <h3 style="margin: 24px 0 12px; font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 500; letter-spacing: .02em; text-transform: uppercase; color: #fff">Cortes com estilo</h3>
+        <p style="margin: 0; color: #9E9484; font-size: .95rem; line-height: 1.6">Precisão, tendência e personalidade em cada detalhe.</p>
+      </article>
+      <article data-bb-reveal="1" style="background: #0A0908; padding: 40px 32px 44px; transition: background .35s ease" style-hover="background: #14110E">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px">
+          <img src="./assets/ic-barbershop.png" alt="" style="width: 54px; height: 54px; object-fit: contain; display: block; opacity: .92">
+          <span style="font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: .2em; color: #D7C4A3">02</span>
+        </div>
+        <h3 style="margin: 24px 0 12px; font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 500; letter-spacing: .02em; text-transform: uppercase; color: #fff">Barba alinhada</h3>
+        <p style="margin: 0; color: #9E9484; font-size: .95rem; line-height: 1.6">Técnica e acabamento na navalha, do contorno ao brilho.</p>
+      </article>
+      <article data-bb-reveal="1" style="background: #0A0908; padding: 40px 32px 44px; transition: background .35s ease" style-hover="background: #14110E">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px">
+          <img src="./assets/ic-chair.png" alt="" style="width: 54px; height: 54px; object-fit: contain; display: block; opacity: .92">
+          <span style="font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: .2em; color: #D7C4A3">03</span>
+        </div>
+        <h3 style="margin: 24px 0 12px; font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 500; letter-spacing: .02em; text-transform: uppercase; color: #fff">Tradição e técnica</h3>
+        <p style="margin: 0; color: #9E9484; font-size: .95rem; line-height: 1.6">Barbearia raiz com toque moderno e mão firme.</p>
+      </article>
+      <article data-bb-reveal="1" style="background: #0A0908; padding: 40px 32px 44px; transition: background .35s ease" style-hover="background: #14110E">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px">
+          <img src="./assets/ic-mirror.png" alt="" style="width: 54px; height: 54px; object-fit: contain; display: block; opacity: .92">
+          <span style="font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: .2em; color: #D7C4A3">04</span>
+        </div>
+        <h3 style="margin: 24px 0 12px; font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 500; letter-spacing: .02em; text-transform: uppercase; color: #fff">Experiência completa</h3>
+        <p style="margin: 0; color: #9E9484; font-size: .95rem; line-height: 1.6">Conforto, atitude e atendimento de primeira.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="sobre" style="max-width: 1440px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 64px) clamp(80px, 11vh, 140px); display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(36px, 5vw, 80px); align-items: center">
+    <div data-bb-parallax="1" style="position: relative; height: clamp(360px, 52vh, 560px); border-radius: 12px; overflow: hidden; border: 1px solid rgba(215,196,163,.2)">
+      <img src="./assets/nova%20foto.jpg" alt="Barbeiro alinhando a barba de um cliente com máquina" style="width: 100%; height: 100%; object-fit: cover; display: block">
+    </div>
+    <div>
+      <div data-bb-reveal="1" style="display: flex; align-items: center; gap: 14px; margin-bottom: 22px">
+        <span style="width: 34px; height: 1px; background: #D7C4A3; display: block"></span>
+        <span style="color: #D7C4A3; font-size: 11px; font-weight: 700; letter-spacing: .26em; text-transform: uppercase">Sobre nós</span>
+      </div>
+      <h2 data-bb-reveal="1" style="margin: 0 0 24px; font-family: 'Oswald', sans-serif; font-weight: 600; font-size: clamp(2.1rem, 4.4vw, 3.6rem); line-height: 1.02; text-transform: uppercase; color: #fff">Barbearia raiz,<br><span style="color: #D7C4A3">acabamento moderno.</span></h2>
+      <p data-bb-reveal="1" style="max-width: 520px; margin: 0 0 30px; color: #B8AE9E; font-size: 1.05rem; line-height: 1.7">Já são mais de 5 anos cortando cabelo e cuidando de barba aqui em Manaus. A casa cresceu com nota 5.0 nas avaliações porque a gente trata cada cliente com respeito, capricha no ambiente e entrega um resultado que você sai orgulhoso de mostrar por aí.</p>
+      <div data-bb-reveal="1" style="display: flex; flex-wrap: wrap; gap: 12px">
+        <span style="padding: 10px 18px; border: 1px solid rgba(215,196,163,.3); border-radius: 100px; color: #D7C4A3; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase">Navalha quente</span>
+        <span style="padding: 10px 18px; border: 1px solid rgba(215,196,163,.3); border-radius: 100px; color: #D7C4A3; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase">Ambiente reservado</span>
+        <span style="padding: 10px 18px; border: 1px solid rgba(215,196,163,.3); border-radius: 100px; color: #D7C4A3; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase">Hora marcada</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos" style="background: #100E0C; border-top: 1px solid rgba(215,196,163,.14); border-bottom: 1px solid rgba(215,196,163,.14)">
+    <div style="max-width: 1440px; margin: 0 auto; padding: clamp(80px, 11vh, 140px) clamp(20px, 5vw, 64px) 0">
+      <div style="margin-bottom: 56px">
+        <div data-bb-reveal="1" style="color: #D7C4A3; font-size: 15px; font-weight: 700; letter-spacing: .26em; text-transform: uppercase; margin-bottom: 16px">Nossos serviços</div>
+        <h2 data-bb-reveal="1" style="margin: 0; font-family: 'Oswald', sans-serif; font-weight: 600; font-size: clamp(1.52rem, 3.2vw, 2.56rem); line-height: 1.02; text-transform: uppercase; color: #fff">Escolha seu cuidado.</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 24px">
+        <article data-bb-card="1" style="position: relative; border: 1px solid rgba(215,196,163,.18); border-radius: 14px; overflow: hidden; background: #0A0908; transition: transform .4s cubic-bezier(.2,.7,.2,1), border-color .4s" style-hover="transform: translateY(-8px); border-color: rgba(215,196,163,.55)">
+          <div style="position: relative; height: 240px; overflow: hidden">
+            <img src="./assets/serv-3.png" alt="Máquinas de corte douradas" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .7s cubic-bezier(.2,.7,.2,1)" style-hover="transform: scale(1.06)">
+          </div>
+          <div style="padding: 28px 26px 30px">
+            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px">
+              <h3 style="margin: 0; font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 500; letter-spacing: .02em; text-transform: uppercase; color: #fff">Corte masculino</h3>
+              <span style="font-family: 'Oswald', sans-serif; font-size: .9rem; letter-spacing: .12em; color: #D7C4A3">45 MIN</span>
+            </div>
+            <p style="margin: 14px 0 18px; color: #9E9484; font-size: .96rem; line-height: 1.6">Corte moderno ou clássico, feito com precisão e estilo.</p>
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px">
+              <span style="font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 600; color: #F3E6CA">R$ 45</span>
+              <a href="#agendamento" aria-label="Agendar corte masculino" style="display: inline-flex; align-items: center; gap: 10px; color: #D7C4A3; font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; text-decoration: none" style-hover="gap: 16px">Agendar <span style="font-size: 15px; line-height: 1">→</span></a>
+            </div>
+          </div>
+        </article>
+        <article data-bb-card="1" style="position: relative; border: 1px solid rgba(215,196,163,.18); border-radius: 14px; overflow: hidden; background: #0A0908; transition: transform .4s cubic-bezier(.2,.7,.2,1), border-color .4s" style-hover="transform: translateY(-8px); border-color: rgba(215,196,163,.55)">
+          <div style="position: relative; height: 240px; overflow: hidden">
+            <img src="./assets/serv-1.png" alt="Navalha sobre o pote de espuma" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .7s cubic-bezier(.2,.7,.2,1)" style-hover="transform: scale(1.06)">
+          </div>
+          <div style="padding: 28px 26px 30px">
+            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px">
+              <h3 style="margin: 0; font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 500; letter-spacing: .02em; text-transform: uppercase; color: #fff">Design de barba</h3>
+              <span style="font-family: 'Oswald', sans-serif; font-size: .9rem; letter-spacing: .12em; color: #D7C4A3">30 MIN</span>
+            </div>
+            <p style="margin: 14px 0 18px; color: #9E9484; font-size: .96rem; line-height: 1.6">Barba alinhada, cuidada e com acabamento na navalha.</p>
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px">
+              <span style="font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 600; color: #F3E6CA">R$ 35</span>
+              <a href="#agendamento" aria-label="Agendar design de barba" style="display: inline-flex; align-items: center; gap: 10px; color: #D7C4A3; font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; text-decoration: none" style-hover="gap: 16px">Agendar <span style="font-size: 15px; line-height: 1">→</span></a>
+            </div>
+          </div>
+        </article>
+        <article data-bb-card="1" style="position: relative; border: 1px solid #D7C4A3; border-radius: 14px; overflow: hidden; background: #0A0908; transition: transform .4s cubic-bezier(.2,.7,.2,1), border-color .4s" style-hover="transform: translateY(-8px); border-color: #F3E6CA">
+          <span style="position: absolute; top: 16px; right: 16px; z-index: 2; padding: 6px 14px; border-radius: 100px; background: #D7C4A3; color: #17130F; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase">Mais pedido</span>
+          <div style="position: relative; height: 240px; overflow: hidden">
+            <img src="./assets/serv-2.png" alt="Ferramentas de barbearia sobre a bancada" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .7s cubic-bezier(.2,.7,.2,1)" style-hover="transform: scale(1.06)">
+          </div>
+          <div style="padding: 28px 26px 30px">
+            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px">
+              <h3 style="margin: 0; font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 500; letter-spacing: .02em; text-transform: uppercase; color: #fff">Combo Brabo</h3>
+              <span style="font-family: 'Oswald', sans-serif; font-size: .9rem; letter-spacing: .12em; color: #D7C4A3">1H 15</span>
+            </div>
+            <p style="margin: 14px 0 18px; color: #9E9484; font-size: .96rem; line-height: 1.6">Corte e barba no mesmo atendimento, com acabamento completo.</p>
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px">
+              <span style="font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 600; color: #F3E6CA">R$ 70</span>
+              <a href="#agendamento" aria-label="Agendar combo brabo" style="display: inline-flex; align-items: center; gap: 10px; color: #D7C4A3; font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; text-decoration: none" style-hover="gap: 16px">Agendar <span style="font-size: 15px; line-height: 1">→</span></a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+    <div data-bb-reveal="1" style="overflow: hidden; margin-top: 56px; border-top: 1px solid rgba(215,196,163,.16); padding: 20px 0">
+      <div style="display: flex; width: max-content; animation: bb-marquee 26s linear infinite">
+        <div style="display: flex; align-items: center; gap: 22px; padding-right: 22px; white-space: nowrap; font-family: 'Oswald', sans-serif; font-weight: 500; font-size: clamp(1.05rem, 2vw, 1.5rem); letter-spacing: .04em; text-transform: uppercase; color: #B8AE9E">
+          <span>Da tesoura à navalha, cuidamos de <span style="color: #D7C4A3">cada detalhe</span> do seu atendimento.</span><svg width="1em" height="1.15em" viewBox="0 0 24 28" aria-hidden="true" style="display: inline-block; color: #D7C4A3; flex: none"><use href="#bb-pole"></use></svg><span>Da tesoura à navalha, cuidamos de <span style="color: #D7C4A3">cada detalhe</span> do seu atendimento.</span><svg width="1em" height="1.15em" viewBox="0 0 24 28" aria-hidden="true" style="display: inline-block; color: #D7C4A3; flex: none"><use href="#bb-pole"></use></svg>
+        </div>
+        <div aria-hidden="true" style="display: flex; align-items: center; gap: 22px; padding-right: 22px; white-space: nowrap; font-family: 'Oswald', sans-serif; font-weight: 500; font-size: clamp(1.05rem, 2vw, 1.5rem); letter-spacing: .04em; text-transform: uppercase; color: #B8AE9E">
+          <span>Da tesoura à navalha, cuidamos de <span style="color: #D7C4A3">cada detalhe</span> do seu atendimento.</span><svg width="1em" height="1.15em" viewBox="0 0 24 28" aria-hidden="true" style="display: inline-block; color: #D7C4A3; flex: none"><use href="#bb-pole"></use></svg><span>Da tesoura à navalha, cuidamos de <span style="color: #D7C4A3">cada detalhe</span> do seu atendimento.</span><svg width="1em" height="1.15em" viewBox="0 0 24 28" aria-hidden="true" style="display: inline-block; color: #D7C4A3; flex: none"><use href="#bb-pole"></use></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="agendamento" style="max-width: 1440px; margin: 0 auto; padding: clamp(80px, 11vh, 140px) clamp(20px, 5vw, 64px); background-image: linear-gradient(100deg, rgba(10,9,8,.97) 0%, rgba(10,9,8,.88) 55%, rgba(10,9,8,.7) 100%), url('./assets/agendamento.jpg'); background-size: cover; background-position: center; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(36px, 5vw, 72px); align-items: start">
+    <div>
+      <div data-bb-reveal="1" style="color: #D7C4A3; font-size: 11px; font-weight: 700; letter-spacing: .26em; text-transform: uppercase; margin-bottom: 16px">Agendamento</div>
+      <h2 data-bb-reveal="1" style="margin: 0 0 22px; font-family: 'Oswald', sans-serif; font-weight: 600; font-size: clamp(2.1rem, 4.4vw, 3.6rem); line-height: 1.02; text-transform: uppercase; color: #fff">Seu próximo corte <span style="color: #D7C4A3">começa aqui.</span></h2>
+      <p data-bb-reveal="1" style="max-width: 460px; margin: 0 0 34px; color: #B8AE9E; font-size: 1.05rem; line-height: 1.7">Escolha os detalhes ao lado. Ao confirmar, sua solicitação já sai pronta no WhatsApp, sem cadastro e sem enrolação.</p>
+      <div data-bb-reveal="1" style="display: grid; gap: 14px; max-width: 420px">
+        <div style="display: flex; gap: 14px; align-items: baseline; padding-bottom: 14px; border-bottom: 1px solid rgba(215,196,163,.16)">
+          <span style="font-family: 'Oswald', sans-serif; color: #D7C4A3; font-size: .85rem; letter-spacing: .16em">SEG–SEX</span>
+          <span style="color: #EDE6DA; font-size: .95rem">08:00 às 20:00</span>
+        </div>
+        <div style="display: flex; gap: 14px; align-items: baseline; padding-bottom: 14px; border-bottom: 1px solid rgba(215,196,163,.16)">
+          <span style="font-family: 'Oswald', sans-serif; color: #D7C4A3; font-size: .85rem; letter-spacing: .16em">SÁBADO</span>
+          <span style="color: #EDE6DA; font-size: .95rem">09:00 às 16:00</span>
+        </div>
+        <div style="display: flex; gap: 14px; align-items: baseline">
+          <span style="font-family: 'Oswald', sans-serif; color: #D7C4A3; font-size: .85rem; letter-spacing: .16em">ONDE</span>
+          <span style="color: #EDE6DA; font-size: .95rem">Rua Barroso, 36, Manaus, AM</span>
+        </div>
+      </div>
+    </div>
+
+    <form data-bb-reveal="1" onSubmit="{{ enviar }}" style="display: grid; gap: 18px; padding: clamp(26px, 3.4vw, 42px); border: 1px solid rgba(215,196,163,.28); border-radius: 14px; background: linear-gradient(160deg, rgba(215,196,163,.07), rgba(10,9,8,.4))">
+      <div style="display: grid; gap: 8px">
+        <label for="bb-nome" style="color: #EDE6DA; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase">Seu nome</label>
+        <input id="bb-nome" name="nome" type="text" autocomplete="name" required placeholder="Como podemos te chamar?" style="min-height: 52px; padding: 12px 16px; border: 1px solid rgba(215,196,163,.35); border-radius: 8px; background: rgba(10,9,8,.6); color: #fff; font-size: 1rem; outline: none; transition: border-color .25s, background .25s" style-focus="border-color: #D7C4A3; background: rgba(10,9,8,.85)">
+      </div>
+      <div style="display: grid; gap: 8px">
+        <label for="bb-servico" style="color: #EDE6DA; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase">Serviço</label>
+        <select id="bb-servico" name="servico" required style="min-height: 52px; padding: 12px 14px; border: 1px solid rgba(215,196,163,.35); border-radius: 8px; background: rgba(10,9,8,.6); color: #fff; font-size: 1rem; outline: none" style-focus="border-color: #D7C4A3">
+          <option value="">Selecione</option>
+          <option>Corte masculino</option>
+          <option>Design de barba</option>
+          <option>Combo Brabo</option>
+        </select>
+      </div>
+      <div style="display: grid; gap: 8px">
+        <label style="color: #EDE6DA; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase">Data e horário</label>
+        <div class="bb-cal-widget" style="display: grid; grid-template-columns: 1.15fr 1fr; border: 1px solid rgba(215,196,163,.28); border-radius: 12px; overflow: hidden; background: rgba(10,9,8,.4)">
+          <div style="padding: 18px; border-right: 1px solid rgba(215,196,163,.16)">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px">
+              <button type="button" onClick="{{ calPrev }}" aria-label="Mês anterior" style="width: 28px; height: 28px; border-radius: 6px; border: 1px solid rgba(215,196,163,.3); background: transparent; color: #D7C4A3; cursor: pointer">‹</button>
+              <span style="font-family: 'Oswald', sans-serif; font-size: .92rem; font-weight: 600; color: #fff; text-transform: capitalize">{{ calTitle }}</span>
+              <button type="button" onClick="{{ calNext }}" aria-label="Próximo mês" style="width: 28px; height: 28px; border-radius: 6px; border: 1px solid rgba(215,196,163,.3); background: transparent; color: #D7C4A3; cursor: pointer">›</button>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-bottom: 6px">
+              <span style="text-align: center; font-size: .68rem; color: #7F776B">D</span>
+              <span style="text-align: center; font-size: .68rem; color: #7F776B">S</span>
+              <span style="text-align: center; font-size: .68rem; color: #7F776B">T</span>
+              <span style="text-align: center; font-size: .68rem; color: #7F776B">Q</span>
+              <span style="text-align: center; font-size: .68rem; color: #7F776B">Q</span>
+              <span style="text-align: center; font-size: .68rem; color: #7F776B">S</span>
+              <span style="text-align: center; font-size: .68rem; color: #7F776B">S</span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px">
+              <sc-for list="{{ calDias }}" as="d" hint-placeholder-count="35">
+                <button type="button" onClick="{{ d.pick }}" style="{{ d.style }}">{{ d.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <div style="padding: 18px; display: flex; flex-direction: column">
+            <div style="font-family: 'Oswald', sans-serif; font-size: .92rem; font-weight: 600; color: #fff; text-transform: capitalize; margin-bottom: 14px">{{ selectedLabel }}</div>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; max-height: 230px; overflow-y: auto; padding-right: 4px">
+              <sc-for list="{{ horarios }}" as="h" hint-placeholder-count="11">
+                <button type="button" onClick="{{ h.pick }}" style="{{ h.style }}">{{ h.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+        <input type="hidden" name="data" value="{{ dataSelecionada }}">
+      </div>
+      <button type="submit" style="display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 56px; margin-top: 4px; padding: 0 28px; border: 1px solid #D7C4A3; border-radius: 100px; background: #D7C4A3; color: #17130F; font-size: 14px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; transition: transform .25s, background .25s, color .25s" style-hover="transform: translateY(-2px); background: transparent; color: #D7C4A3">Solicitar horário no WhatsApp</button>
+      <p aria-live="polite" style="min-height: 20px; margin: 0; color: #D7C4A3; font-size: .88rem">{{ feedback }}</p>
+    </form>
+  </section>
+
+  <section id="galeria" style="border-top: 1px solid rgba(215,196,163,.14); background: #100E0C">
+    <div style="max-width: 1440px; margin: 0 auto; padding: clamp(80px, 11vh, 140px) clamp(20px, 5vw, 64px)">
+      <div style="margin-bottom: 46px">
+        <div data-bb-reveal="1" style="color: #D7C4A3; font-size: 11px; font-weight: 700; letter-spacing: .26em; text-transform: uppercase; margin-bottom: 16px">Nossa essência</div>
+        <h2 data-bb-reveal="1" style="margin: 0; font-family: 'Oswald', sans-serif; font-weight: 600; font-size: clamp(2.1rem, 4.4vw, 3.6rem); line-height: 1.02; text-transform: uppercase; color: #fff">Barbearia com presença.</h2>
+      </div>
+      <div data-bb-reveal="1" id="bb-coverflow" style="position: relative; height: clamp(260px, 40vh, 380px); perspective: 1200px; overflow: hidden">
+        <div class="bb-cf-slide" data-src="./assets/man-barbershop-salon-doing-haircut-beard-trim.jpg" style="position: absolute; top: 0; left: 50%; width: min(58vw, 420px); height: 100%; margin-left: calc(min(58vw, 420px) / -2); border-radius: 14px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,.5); cursor: pointer; transition: transform .6s cubic-bezier(.22,.8,.24,1), opacity .6s ease">
+          <img src="./assets/man-barbershop-salon-doing-haircut-beard-trim.jpg" alt="Barbeiro aparando a barba do cliente com máquina" draggable="false" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; filter: saturate(.9)">
+        </div>
+        <div class="bb-cf-slide" data-src="./assets/handsome-man-cutting-beard-barber-salon.jpg" style="position: absolute; top: 0; left: 50%; width: min(58vw, 420px); height: 100%; margin-left: calc(min(58vw, 420px) / -2); border-radius: 14px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,.5); cursor: pointer; transition: transform .6s cubic-bezier(.22,.8,.24,1), opacity .6s ease">
+          <img src="./assets/handsome-man-cutting-beard-barber-salon.jpg" alt="Barba sendo preparada com espuma antes da navalha" draggable="false" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; filter: saturate(.9)">
+        </div>
+        <div class="bb-cf-slide" data-src="./assets/client-doing-hair-cut-barber-shop-salon.jpg" style="position: absolute; top: 0; left: 50%; width: min(58vw, 420px); height: 100%; margin-left: calc(min(58vw, 420px) / -2); border-radius: 14px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,.5); cursor: pointer; transition: transform .6s cubic-bezier(.22,.8,.24,1), opacity .6s ease">
+          <img src="./assets/client-doing-hair-cut-barber-shop-salon.jpg" alt="Corte de cabelo com tesoura e pente" draggable="false" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; filter: saturate(.9)">
+        </div>
+        <div class="bb-cf-slide" data-src="./assets/handsome-man-cutting-beard-barber-salon%20(1).jpg" style="position: absolute; top: 0; left: 50%; width: min(58vw, 420px); height: 100%; margin-left: calc(min(58vw, 420px) / -2); border-radius: 14px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,.5); cursor: pointer; transition: transform .6s cubic-bezier(.22,.8,.24,1), opacity .6s ease">
+          <img src="./assets/handsome-man-cutting-beard-barber-salon%20(1).jpg" alt="Acabamento da barba na navalha" draggable="false" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; filter: saturate(.9)">
+        </div>
+        <div class="bb-cf-slide" data-src="./assets/man-barbershop-salon-doing-haircut-beard-trim%20(1).jpg" style="position: absolute; top: 0; left: 50%; width: min(58vw, 420px); height: 100%; margin-left: calc(min(58vw, 420px) / -2); border-radius: 14px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,.5); cursor: pointer; transition: transform .6s cubic-bezier(.22,.8,.24,1), opacity .6s ease">
+          <img src="./assets/man-barbershop-salon-doing-haircut-beard-trim%20(1).jpg" alt="Barbeiro alinhando a barba com pente" draggable="false" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; filter: saturate(.9)">
+        </div>
+        <div class="bb-cf-slide" data-src="./assets/tools-profession-hairdresser.jpg" style="position: absolute; top: 0; left: 50%; width: min(58vw, 420px); height: 100%; margin-left: calc(min(58vw, 420px) / -2); border-radius: 14px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,.5); cursor: pointer; transition: transform .6s cubic-bezier(.22,.8,.24,1), opacity .6s ease">
+          <img src="./assets/tools-profession-hairdresser.jpg" alt="Ferramentas profissionais de barbearia" draggable="false" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; filter: saturate(.9)">
+        </div>
+        <div class="bb-cf-slide" data-src="./assets/handsome-man-barber-shop-styling-hair.jpg" style="position: absolute; top: 0; left: 50%; width: min(58vw, 420px); height: 100%; margin-left: calc(min(58vw, 420px) / -2); border-radius: 14px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,.5); cursor: pointer; transition: transform .6s cubic-bezier(.22,.8,.24,1), opacity .6s ease">
+          <img src="./assets/handsome-man-barber-shop-styling-hair.jpg" alt="Finalizando o penteado com secador" draggable="false" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; filter: saturate(.9)">
+        </div>
+        <button id="bb-cf-prev" aria-label="Foto anterior" style="position: absolute; top: 50%; left: clamp(6px, 2vw, 20px); transform: translateY(-50%); z-index: 200; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(215,196,163,.5); background: rgba(10,9,8,.55); color: #D7C4A3; font-size: 20px; line-height: 1; cursor: pointer; transition: background .25s, border-color .25s" style-hover="background: #D7C4A3; color: #17130F; border-color: #D7C4A3">‹</button>
+        <button id="bb-cf-next" aria-label="Próxima foto" style="position: absolute; top: 50%; right: clamp(6px, 2vw, 20px); transform: translateY(-50%); z-index: 200; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(215,196,163,.5); background: rgba(10,9,8,.55); color: #D7C4A3; font-size: 20px; line-height: 1; cursor: pointer; transition: background .25s, border-color .25s" style-hover="background: #D7C4A3; color: #17130F; border-color: #D7C4A3">›</button>
+      </div>
+      <div id="bb-cf-dots" style="display: flex; justify-content: center; gap: 10px; margin-top: 22px"></div>
+    </div>
+  </section>
+
+  <div id="bb-lightbox" style="position: fixed; inset: 0; z-index: 80; display: none; align-items: center; justify-content: center; background: rgba(10,9,8,.94); padding: 24px; cursor: zoom-out">
+    <img id="bb-lightbox-img" src="" alt="" style="max-width: 92vw; max-height: 88vh; border-radius: 12px; box-shadow: 0 30px 80px rgba(0,0,0,.6); display: block">
+  </div>
+
+  <section style="max-width: 1440px; margin: 0 auto; padding: clamp(80px, 11vh, 140px) clamp(20px, 5vw, 64px)">
+    <div style="margin-bottom: 46px">
+      <div data-bb-reveal="1" style="color: #D7C4A3; font-size: 11px; font-weight: 700; letter-spacing: .26em; text-transform: uppercase; margin-bottom: 16px">Quem vem, volta</div>
+      <h2 data-bb-reveal="1" style="margin: 0; font-family: 'Oswald', sans-serif; font-weight: 600; font-size: clamp(2.1rem, 4.4vw, 3.6rem); line-height: 1.02; text-transform: uppercase; color: #fff">Atendimento que <span style="color: #D7C4A3">deixa marca.</span></h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px">
+      <sc-for list="{{ depoimentos }}" as="t" hint-placeholder-count="3">
+        <figure data-bb-reveal="1" style="display: grid; gap: 22px; align-content: space-between; margin: 0; padding: 34px 30px; border: 1px solid rgba(215,196,163,.2); border-radius: 12px; background: rgba(103,94,86,.14); transition: border-color .35s, background .35s" style-hover="border-color: rgba(215,196,163,.5); background: rgba(103,94,86,.22)">
+          <div style="font-family: 'Oswald', sans-serif; color: #D7C4A3; font-size: 14px; letter-spacing: .2em">★★★★★</div>
+          <blockquote style="margin: 0; color: #F1EAE0; font-size: 1.06rem; line-height: 1.6">{{ t.texto }}</blockquote>
+          <figcaption style="color: #A79C8C; font-size: 12px; letter-spacing: .14em; text-transform: uppercase">{{ t.autor }}</figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); align-items: center; background: #17130F; border-top: 1px solid rgba(215,196,163,.14)">
+    <div style="display: flex; flex-direction: column; justify-content: center; padding: clamp(56px, 8vh, 96px) clamp(24px, 5vw, 72px)">
+      <div data-bb-reveal="1" style="color: #D7C4A3; font-size: 13px; font-weight: 700; letter-spacing: .26em; text-transform: uppercase; margin-bottom: 16px">Onde estamos</div>
+      <h2 data-bb-reveal="1" style="margin: 0 0 18px; font-family: 'Oswald', sans-serif; font-weight: 600; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.05; text-transform: uppercase; color: #fff">Sua barbearia em Manaus.</h2>
+      <p data-bb-reveal="1" style="margin: 0; color: #B8AE9E; font-size: 1.1rem">Rua Barroso, 36, Manaus, AM</p>
+    </div>
+    <div style="padding: clamp(24px, 5vw, 56px); box-sizing: border-box">
+      <iframe title="Mapa da Barbearia Barba Brava" src="https://www.google.com/maps?q=Rua%20Barroso%2C%2036%2C%20Manaus%2C%20AM&output=embed" loading="lazy" style="display: block; width: 100%; height: clamp(260px, 34vh, 340px); border: 0; border-radius: 14px; overflow: hidden; filter: grayscale(.8) contrast(1.02) brightness(.97)"></iframe>
+    </div>
+  </section>
+
+  <footer id="contato" style="background-image: linear-gradient(rgba(16,14,12,.9), rgba(16,14,12,.94)), url('./assets/footer-bg.png'); background-color: #100E0C; background-size: cover; background-position: center; border-top: 1px solid rgba(215,196,163,.16)">
+    <div style="max-width: 1440px; margin: 0 auto; padding: clamp(64px, 9vh, 110px) clamp(20px, 5vw, 64px) 34px">
+      <div style="display: flex; flex-wrap: wrap; gap: 40px clamp(48px, 6vw, 96px)">
+        <div style="flex: 1 1 220px; max-width: 280px">
+          <img src="./assets/logo.png" alt="Barbearia Barba Brava" style="width: 190px; max-width: 100%; margin-bottom: 20px; display: block">
+          <p style="margin: 0; max-width: 260px; color: #7F776B; font-size: .92rem; line-height: 1.6">Estilo, presença e respeito desde 2021.</p>
+        </div>
+        <div style="flex: 0 1 auto; min-width: 140px">
+          <h3 style="margin: 0 0 12px; color: #D7C4A3; font-family: 'Oswald', sans-serif; font-size: 1rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase">Navegação</h3>
+          <span style="display: block; width: 26px; height: 2px; background: #D7C4A3; margin-bottom: 18px"></span>
+          <div style="display: grid; gap: 12px">
+            <a href="#sobre" style="color: #B8AE9E; font-size: .94rem; text-decoration: none" style-hover="color: #fff">Sobre</a>
+            <a href="#servicos" style="color: #B8AE9E; font-size: .94rem; text-decoration: none" style-hover="color: #fff">Serviços</a>
+            <a href="#galeria" style="color: #B8AE9E; font-size: .94rem; text-decoration: none" style-hover="color: #fff">Galeria</a>
+            <a href="#agendamento" style="color: #B8AE9E; font-size: .94rem; text-decoration: none" style-hover="color: #fff">Agendamento</a>
+          </div>
+        </div>
+        <div style="flex: 0 1 auto; min-width: 160px">
+          <h3 style="margin: 0 0 12px; color: #D7C4A3; font-family: 'Oswald', sans-serif; font-size: 1rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase">Horários</h3>
+          <span style="display: block; width: 26px; height: 2px; background: #D7C4A3; margin-bottom: 18px"></span>
+          <p style="margin: 0 0 10px; color: #B8AE9E; font-size: .94rem">Segunda a sexta: 08:00 às 20:00</p>
+          <p style="margin: 0; color: #B8AE9E; font-size: .94rem">Sábado: 09:00 às 16:00</p>
+        </div>
+        <div style="flex: 0 1 auto; min-width: 140px">
+          <h3 style="margin: 0 0 12px; color: #D7C4A3; font-family: 'Oswald', sans-serif; font-size: 1rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase">Redes sociais</h3>
+          <span style="display: block; width: 26px; height: 2px; background: #D7C4A3; margin-bottom: 18px"></span>
+          <div style="display: flex; gap: 12px; margin-bottom: 26px">
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram @barbabrava" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(215,196,163,.35); background: rgba(215,196,163,.08); color: #D7C4A3; transition: background .25s, color .25s, border-color .25s" style-hover="background: #D7C4A3; color: #17130F; border-color: #D7C4A3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"></circle></svg></a>
+            <a href="https://wa.me/5592999999999" target="_blank" rel="noopener" aria-label="WhatsApp" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(215,196,163,.35); background: rgba(215,196,163,.08); color: #D7C4A3; transition: background .25s, color .25s, border-color .25s" style-hover="background: #D7C4A3; color: #17130F; border-color: #D7C4A3"><svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.02 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.26.6 4.47 1.73 6.42L3.1 28.9l6.66-1.75a12.75 12.75 0 0 0 6.25 1.6h.01c7.06 0 12.8-5.74 12.8-12.8 0-3.42-1.33-6.63-3.75-9.05a12.71 12.71 0 0 0-9.05-3.7zm0 23.35h-.01a10.6 10.6 0 0 1-5.4-1.48l-.39-.23-4.01 1.05 1.07-3.91-.25-.4a10.57 10.57 0 0 1-1.62-5.63c0-5.87 4.78-10.64 10.65-10.64 2.84 0 5.51 1.11 7.52 3.12a10.57 10.57 0 0 1 3.11 7.53c0 5.87-4.78 10.64-10.67 10.64zm5.84-7.97c-.32-.16-1.98-.98-2.29-1.09-.31-.11-.53-.17-.76.16-.22.32-.87 1.09-1.07 1.31-.2.22-.4.25-.72.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.9-1.78-2.22-.19-.32-.02-.5.14-.66.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.11-.22.05-.4-.03-.56-.08-.16-.72-1.83-.99-2.5-.26-.66-.53-.57-.72-.58h-.62c-.22 0-.56.08-.85.4-.29.32-1.11 1.09-1.11 2.65s1.14 3.08 1.3 3.29c.16.21 2.24 3.56 5.46 4.86.76.33 1.36.52 1.82.67.77.24 1.47.21 2.02.13.62-.09 1.98-.81 2.26-1.59.28-.79.28-1.46.2-1.6-.08-.14-.29-.22-.61-.38z"></path></svg></a>
+          </div>
+          <a href="#agendamento" style="display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 22px; border: 1px solid #D7C4A3; border-radius: 100px; color: #D7C4A3; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; transition: background .25s, color .25s" style-hover="background: #D7C4A3; color: #17130F">Agendar agora</a>
+        </div>
+      </div>
+      <p style="margin: 56px 0 0; padding-top: 26px; border-top: 1px solid rgba(215,196,163,.16); color: #6E655A; font-size: .82rem; text-align: center">© 2026 Barbearia Barba Brava. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5592999999999?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio." target="_blank" rel="noopener" aria-label="Agendar pelo WhatsApp" style="position: fixed; right: 24px; bottom: 24px; z-index: 60; display: grid; place-items: center; width: 58px; height: 58px; border-radius: 50%; background: #25D366; color: #fff; text-decoration: none; box-shadow: 0 10px 28px rgba(0,0,0,.45); animation: bb-pulse 2.6s ease-out infinite; transition: transform .25s" style-hover="transform: translateY(-3px) scale(1.05); color: #fff"><svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor" aria-hidden="true" style="display: block"><path d="M16.02 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.26.6 4.47 1.73 6.42L3.1 28.9l6.66-1.75a12.75 12.75 0 0 0 6.25 1.6h.01c7.06 0 12.8-5.74 12.8-12.8 0-3.42-1.33-6.63-3.75-9.05a12.71 12.71 0 0 0-9.05-3.7zm0 23.35h-.01a10.6 10.6 0 0 1-5.4-1.48l-.39-.23-4.01 1.05 1.07-3.91-.25-.4a10.57 10.57 0 0 1-1.62-5.63c0-5.87 4.78-10.64 10.65-10.64 2.84 0 5.51 1.11 7.52 3.12a10.57 10.57 0 0 1 3.11 7.53c0 5.87-4.78 10.64-10.67 10.64zm5.84-7.97c-.32-.16-1.98-.98-2.29-1.09-.31-.11-.53-.17-.76.16-.22.32-.87 1.09-1.07 1.31-.2.22-.4.25-.72.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.9-1.78-2.22-.19-.32-.02-.5.14-.66.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.11-.22.05-.4-.03-.56-.08-.16-.72-1.83-.99-2.5-.26-.66-.53-.57-.72-.58h-.62c-.22 0-.56.08-.85.4-.29.32-1.11 1.09-1.11 2.65s1.14 3.08 1.3 3.29c.16.21 2.24 3.56 5.46 4.86.76.33 1.36.52 1.82.67.77.24 1.47.21 2.02.13.62-.09 1.98-.81 2.26-1.59.28-.79.28-1.46.2-1.6-.08-.14-.29-.22-.61-.38z"/></svg></a>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+const WPP = '5592999999999';
+
+class Component extends DCLogic {
+  state = (() => {
+    const d = new Date();
+    const hoje = new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().split('T')[0];
+    return { horario: '', feedback: '', calYear: d.getFullYear(), calMonth: d.getMonth(), dataSelecionada: hoje };
+  })();
+
+  componentDidMount() {
+    this.tries = 0;
+    this.timer = setInterval(() => {
+      if (window.gsap && window.ScrollTrigger) { clearInterval(this.timer); this.animate(); }
+      else if (++this.tries > 80) clearInterval(this.timer);
+    }, 100);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
+    clearInterval(this.heroTimer);
+    if (this.coverflowCleanup) this.coverflowCleanup();
+    if (window.ScrollTrigger) ScrollTrigger.getAll().forEach(t => t.kill());
+  }
+
+  animate() {
+    const root = this.el || document;
+    gsap.registerPlugin(ScrollTrigger);
+    this.initCoverflow(root);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    gsap.from(root.querySelectorAll('[data-bb-line-inner]'), {
+      yPercent: 115, duration: 1.1, ease: 'power4.out', stagger: 0.09, delay: 0.15
+    });
+    gsap.from(root.querySelectorAll('[data-bb-hero]'), {
+      y: 26, opacity: 0, duration: 0.9, ease: 'power3.out', stagger: 0.12, delay: 0.5
+    });
+
+    root.querySelectorAll('[data-bb-reveal]').forEach(el => {
+      gsap.from(el, {
+        y: 34, opacity: 0, duration: 0.9, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 88%' }
+      });
+    });
+
+    gsap.utils.toArray(root.querySelectorAll('[data-bb-card]')).forEach((el, i) => {
+      gsap.from(el, {
+        y: 60, opacity: 0, duration: 1, ease: 'power3.out', delay: i * 0.08,
+        scrollTrigger: { trigger: el, start: 'top 90%' }
+      });
+    });
+
+    const heroImg = root.querySelector('[data-bb-heroimg]');
+    if (heroImg) gsap.to(heroImg, {
+      yPercent: 9, ease: 'none',
+      scrollTrigger: { trigger: heroImg, start: 'top top', end: 'bottom top', scrub: true }
+    });
+
+    const heroSlides = Array.from(root.querySelectorAll('[data-bb-hero-slide]'));
+    if (heroSlides.length > 1) {
+      const HOLD = 6, TRANSITION = 1.6;
+      let heroIndex = 0;
+
+      const zoomIn = (img) => {
+        gsap.set(img, { scale: 1 });
+        gsap.to(img, { scale: 1.12, duration: HOLD + TRANSITION, ease: 'none' });
+      };
+      zoomIn(heroSlides[0].querySelector('img'));
+
+      this.heroTimer = setInterval(() => {
+        const current = heroSlides[heroIndex];
+        heroIndex = (heroIndex + 1) % heroSlides.length;
+        const next = heroSlides[heroIndex];
+        zoomIn(next.querySelector('img'));
+        gsap.to(current, { opacity: 0, duration: TRANSITION, ease: 'power1.inOut' });
+        gsap.to(next, { opacity: 1, duration: TRANSITION, ease: 'power1.inOut' });
+      }, HOLD * 1000);
+    }
+
+    root.querySelectorAll('[data-bb-parallax]').forEach(el => {
+      gsap.fromTo(el, { y: 50 }, {
+        y: -50, ease: 'none',
+        scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true }
+      });
+    });
+
+    const counter = root.querySelector('[data-bb-count]');
+    if (counter) {
+      const target = Number(counter.getAttribute('data-bb-count'));
+      const suffix = counter.getAttribute('data-bb-suffix') || '';
+      const obj = { v: 0 };
+      gsap.to(obj, {
+        v: target, duration: 1.4, delay: 0.7, ease: 'power2.out',
+        onUpdate: () => { counter.textContent = Math.round(obj.v) + suffix; }
+      });
+    }
+
+    const header = root.querySelector('[data-bb-header]');
+    if (header) ScrollTrigger.create({
+      start: 'top -80',
+      onToggle: self => {
+        header.style.background = self.isActive ? 'rgba(10,9,8,.82)' : 'linear-gradient(180deg, rgba(10,9,8,.55), transparent)';
+        header.style.backdropFilter = self.isActive ? 'blur(14px)' : 'none';
+        header.style.borderBottom = self.isActive ? '1px solid rgba(215,196,163,.18)' : '1px solid transparent';
+        header.style.padding = self.isActive ? '12px clamp(20px, 5vw, 64px)' : '20px clamp(20px, 5vw, 64px)';
+      }
+    });
+  }
+
+  initCoverflow(root) {
+    const wrap = root.querySelector('#bb-coverflow');
+    const slides = Array.from(root.querySelectorAll('.bb-cf-slide'));
+    const dotsWrap = root.querySelector('#bb-cf-dots');
+    const prevBtn = root.querySelector('#bb-cf-prev');
+    const nextBtn = root.querySelector('#bb-cf-next');
+    if (!wrap || !slides.length) return;
+    const count = slides.length;
+    let active = 0;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', `Ir para foto ${i + 1}`);
+      dot.style.cssText = 'width:8px;height:8px;padding:0;border:none;border-radius:50%;cursor:pointer;background:rgba(215,196,163,.35);transition:background .25s ease, transform .25s ease';
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+    const dots = Array.from(dotsWrap.children);
+
+    const render = () => {
+      slides.forEach((slide, i) => {
+        let d = i - active;
+        if (d > count / 2) d -= count;
+        if (d < -count / 2) d += count;
+        const abs = Math.abs(d);
+        const x = d * 62;
+        const rotateY = d === 0 ? 0 : (d > 0 ? -38 : 38);
+        const scale = abs === 0 ? 1 : abs === 1 ? .78 : .6;
+        const z = -abs * 160;
+        const opacity = Math.max(1 - abs * 0.32, 0);
+        slide.style.transform = `translateX(${x}%) translateZ(${z}px) rotateY(${rotateY}deg) scale(${scale})`;
+        slide.style.zIndex = String(100 - abs);
+        slide.style.opacity = String(opacity);
+        slide.style.pointerEvents = abs > 2 ? 'none' : 'auto';
+      });
+      dots.forEach((dot, i) => {
+        dot.style.background = i === active ? '#D7C4A3' : 'rgba(215,196,163,.35)';
+        dot.style.transform = i === active ? 'scale(1.3)' : 'scale(1)';
+      });
+    };
+
+    const goTo = (i) => {
+      active = ((i % count) + count) % count;
+      render();
+      restartAutoplay();
+    };
+
+    prevBtn.addEventListener('click', () => goTo(active - 1));
+    nextBtn.addEventListener('click', () => goTo(active + 1));
+
+    const lightbox = root.querySelector('#bb-lightbox');
+    const lightboxImg = root.querySelector('#bb-lightbox-img');
+    slides.forEach((slide, i) => {
+      slide.addEventListener('click', () => {
+        if (i !== active) { goTo(i); return; }
+        lightboxImg.src = slide.getAttribute('data-src');
+        lightboxImg.alt = slide.querySelector('img').alt;
+        lightbox.style.display = 'flex';
+        gsap.fromTo(lightboxImg, { scale: .9, opacity: 0 }, { scale: 1, opacity: 1, duration: .35, ease: 'power2.out' });
+      });
+    });
+    lightbox.addEventListener('click', () => { lightbox.style.display = 'none'; });
+
+    let autoplayId = null;
+    const startAutoplay = () => {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      autoplayId = setInterval(() => goTo(active + 1), 3800);
+    };
+    const restartAutoplay = () => { clearInterval(autoplayId); startAutoplay(); };
+    wrap.addEventListener('mouseenter', () => clearInterval(autoplayId));
+    wrap.addEventListener('mouseleave', startAutoplay);
+
+    render();
+    startAutoplay();
+    this.coverflowCleanup = () => clearInterval(autoplayId);
+  }
+
+  slotStyle(active) {
+    return `min-height:36px;width:100%;padding:0 8px;border-radius:7px;cursor:pointer;font-size:.78rem;font-weight:600;letter-spacing:.01em;transition:all .2s ease;border:1px solid ${active ? '#D7C4A3' : 'rgba(215,196,163,.25)'};background:${active ? '#D7C4A3' : 'transparent'};color:${active ? '#17130F' : '#EDE6DA'}`;
+  }
+
+  calCellStyle(selected, disabled) {
+    if (selected) return 'aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:7px;border:none;cursor:pointer;font-size:.82rem;font-weight:700;background:#F3E6CA;color:#17130F';
+    if (disabled) return 'aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:7px;border:none;cursor:default;font-size:.82rem;font-weight:500;background:transparent;color:rgba(215,196,163,.25)';
+    return 'aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:7px;border:none;cursor:pointer;font-size:.82rem;font-weight:500;background:transparent;color:#EDE6DA';
+  }
+
+  calPrev = () => {
+    let { calYear, calMonth } = this.state;
+    calMonth--; if (calMonth < 0) { calMonth = 11; calYear--; }
+    this.setState({ calYear, calMonth });
+  };
+
+  calNext = () => {
+    let { calYear, calMonth } = this.state;
+    calMonth++; if (calMonth > 11) { calMonth = 0; calYear++; }
+    this.setState({ calYear, calMonth });
+  };
+
+  calPick = (iso) => {
+    this.setState({ dataSelecionada: iso, horario: '', feedback: '' });
+  };
+
+  enviar = (e) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    if (!this.state.horario) { this.setState({ feedback: 'Escolha um horário para continuar.' }); return; }
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    const f = new FormData(form);
+    const nome = String(f.get('nome') || '').trim();
+    const servico = f.get('servico');
+    const data = new Intl.DateTimeFormat('pt-BR', { timeZone: 'UTC' }).format(new Date(`${f.get('data')}T00:00:00Z`));
+    const msg = `Olá! Meu nome é ${nome}. Gostaria de solicitar um horário na Barba Brava.%0A%0AServiço: ${servico}%0AData desejada: ${data}%0AHorário preferido: ${this.state.horario}`;
+    this.setState({ feedback: 'Abrindo o WhatsApp com seus dados…' });
+    window.open(`https://wa.me/${WPP}?text=${msg}`, '_blank', 'noopener');
+  };
+
+  renderVals() {
+    const today = new Date();
+    const hoje = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().split('T')[0];
+    const horas = ['08:00','09:00','10:00','11:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00'];
+    const MESES = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+    const DIAS_SEMANA = ['Domingo','Segunda-feira','Terça-feira','Quarta-feira','Quinta-feira','Sexta-feira','Sábado'];
+    const { calYear, calMonth, dataSelecionada } = this.state;
+
+    const toISO = (d) => new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().split('T')[0];
+    const firstWeekday = new Date(calYear, calMonth, 1).getDay();
+    const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+    const daysInPrevMonth = new Date(calYear, calMonth, 0).getDate();
+
+    const calDias = [];
+    for (let i = 0; i < firstWeekday; i++) {
+      calDias.push({ label: String(daysInPrevMonth - firstWeekday + 1 + i), style: this.calCellStyle(false, true), pick: () => {} });
+    }
+    for (let day = 1; day <= daysInMonth; day++) {
+      const dateObj = new Date(calYear, calMonth, day);
+      const iso = toISO(dateObj);
+      const disabled = iso < hoje || dateObj.getDay() === 0;
+      const selected = iso === dataSelecionada;
+      calDias.push({
+        label: String(day),
+        style: this.calCellStyle(selected, disabled),
+        pick: disabled ? () => {} : () => this.calPick(iso)
+      });
+    }
+    while (calDias.length % 7 !== 0) {
+      calDias.push({ label: String(calDias.length - firstWeekday - daysInMonth + 1), style: this.calCellStyle(false, true), pick: () => {} });
+    }
+
+    const selDate = new Date(`${dataSelecionada}T00:00:00`);
+    const selectedLabel = `${DIAS_SEMANA[selDate.getDay()]}, ${selDate.getDate()}`;
+
+    return {
+      hoje,
+      dataSelecionada,
+      calTitle: `${MESES[calMonth]} ${calYear}`,
+      calDias,
+      selectedLabel,
+      calPrev: this.calPrev,
+      calNext: this.calNext,
+      feedback: this.state.feedback,
+      enviar: this.enviar,
+      horarios: horas.map(h => ({
+        label: h,
+        style: this.slotStyle(this.state.horario === h),
+        pick: () => this.setState({ horario: h, feedback: '' })
+      })),
+      depoimentos: [
+        { texto: '“Cheguei sem hora marcada, não esperei quase nada e saí com o corte certinho. Já virei cliente fixo.”', autor: 'Cliente fixo' },
+        { texto: '“Ambiente gostoso, o pessoal trata a gente bem e o resultado fala por si. Recomendo de olhos fechados.”', autor: 'Cliente satisfeito' },
+        { texto: '“Da tesoura à navalha, tudo no capricho. Todo mundo que eu levo lá acaba virando cliente também.”', autor: 'Cliente Barba Brava' }
+      ]
+    };
+  }
+}
+
+</script>
+</body>
+</html>
